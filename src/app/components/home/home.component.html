@@ -1,0 +1,63 @@
+
+<!-- <div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-md-4" *ngFor="let product of productList | slice:0:10">
+            <div class="card">
+                <img [src]="product.img_link" class="card-img-top" [alt]="product.name">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.product_name }}</h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <a href="#" class="btn btn-primary">Buy Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- <div class="container mt-5">
+    <div class="row">
+        
+        <div class="col-md-4" *ngFor="let product of productList ">
+            <div class="amazon-card">
+                <img [src]="product.img_link" class="amazon-card-img" [alt]="product.name">
+                <h5 class="amazon-card-title">{{ product.product_name }}</h5>
+                <p class="card-text amazon-card-description">{{ product.about_product }}</p>
+                <div class="amazon-card-footer">
+                
+                    <a href="#" class="btn btn-primary amazon-card-btn">Buy Now</a>
+                    <a href="#" class="btn btn-primary "><i class="fa fa-cart-plus" style="font-size:20px"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let product of productList">
+            <div class="amazon-card">
+                <img [src]="product.img_link" class="amazon-card-img" [alt]="product.name">
+                <h5 class="amazon-card-title">{{ product.product_name }}</h5>
+                <p class="card-text amazon-card-description">{{ product.about_product }}</p>
+                
+                <!-- Displaying the product prices and discount -->
+                <div class="pricing">
+                    <span class="discounted-price">₹ {{ product.discounted_price }}</span>
+                    <span class="actual-price">₹ <s>{{ product.actual_price }}</s></span>
+                    <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}% off</span>
+                </div>
+                
+
+                <div class="amazon-card-footer">
+                    <a href="#" class="btn btn-primary amazon-card-btn">Buy Now</a>
+                    <a href="#" class="btn btn-primary "><i class="fa fa-cart-plus" style="font-size:20px"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
