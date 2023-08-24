@@ -2,17 +2,17 @@
     <div class="shape"></div>
     <div class="shape"></div>
 </div>
-<form *ngIf="!isRegister">
+<!-- <form *ngIf="!isRegister">
 
     <h3>Login Here</h3>
 
     <label for="username">Username</label>
-    <input type="text" name="userName" [(ngModel)]="loginObj.UserName" placeholder="Email or Phone" id="username">
+    <input type="text" name="userName" [(ngModel)]="username" placeholder="Email or Phone" id="username">
 
     <label for="password">Password</label>
-    <input type="password" name="password" [(ngModel)]="loginObj.Password" placeholder="Password" id="password">
+    <input type="password" name="password" [(ngModel)]="password" placeholder="Password" id="password">
 
-    <button style="color: black" (click)="onLogin()">Log In</button>
+    <button style="color: black" (click)="handleLogin()">Log In</button>
     <div class="social">
         <div class="go" (click)="isRegister = !isRegister"> <i class="fab fa-google"></i> Register</div>
 
@@ -22,14 +22,31 @@
 <form *ngIf="isRegister">
     <h3>Register Here</h3>
     <label for="username">Username</label>
-    <input type="text" name="userName" [(ngModel)]="registerObj.UserName" placeholder="Email or Phone" id="username">
+    <input type="text" name="userName" [(ngModel)]="username" placeholder="Email or Phone" id="username">
 
     <label for="password">Password</label>
-    <input type="password" name="password" [(ngModel)]="registerObj.Password" placeholder="Password" id="password">
+    <input type="password" name="password" [(ngModel)]="password" placeholder="Password" id="password">
 
     <button style="color: black" (click)="onRegister()">Register</button>
     <div class="social">
         <div class="go" (click)="isRegister = !isRegister"> <i class="fab fa-google"></i> Login</div>
 
     </div>
-</form>
+</form> -->
+
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+      <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+      <!-- Tabs Titles -->
+      <h3>Login</h3>
+  
+      <!-- Login Form -->
+      <form>
+        <input type="text" id="username" class="fadeIn second" [(ngModel)]="username" name="username" placeholder="username">
+        <input type="password" id="password" class="fadeIn third" [(ngModel)]="password" name="password" placeholder="password">
+        <input type="submit" (click)=handleLogin() class="fadeIn fourth" value="Log In">
+      </form>
+  
+    </div>
+  </div>

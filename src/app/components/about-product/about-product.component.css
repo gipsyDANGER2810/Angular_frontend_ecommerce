@@ -1,0 +1,18 @@
+.golden-star {
+    color: gold;
+}
+
+.discounted-price {
+    color: green;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.actual-price {
+    margin-right: 10px;
+    color: #888;
+}
+
+.discount-percentage {
+    color: red;
+}

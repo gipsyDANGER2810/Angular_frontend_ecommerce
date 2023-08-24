@@ -1,4 +1,3 @@
-
 <!-- <div class="container mt-5">
     <div class="row">
         
@@ -32,17 +31,20 @@
         </div>
     </div>
 </div> -->
+<div *ngIf="isLoading" class="loader-container">
+    <div class="loader-bar"></div>
+</div>
+<h2 class="text-center">Best Sellers!</h2>
 
-
-<div class="container mt-5">
+<div *ngIf="!isLoading" class="container mt-5">
     <div class="row">
         <div class="col-md-4" *ngFor="let product of productList">
-            <div class="amazon-card">
+            <div class="amazon-card " (click)="sendProductName(product.product_name , product.product_id)">
                 <img [src]="product.img_link" class="amazon-card-img" [alt]="product.name">
                 <h5 class="amazon-card-title">{{ product.product_name }}</h5>
                 <p class="card-text amazon-card-description">{{ product.about_product }}</p>
                 
-                <!-- Displaying the product prices and discount -->
+                
                 <div class="pricing">
                     <span class="discounted-price">₹ {{ product.discounted_price }}</span>
                     <span class="actual-price">₹ <s>{{ product.actual_price }}</s></span>
@@ -58,6 +60,5 @@
         </div>
     </div>
 </div>
-
 
 
