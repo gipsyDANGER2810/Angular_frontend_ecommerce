@@ -1,3 +1,88 @@
+/* .golden-star {
+    color: gold;
+}
+
+.discounted-price {
+    color: green;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.actual-price {
+    margin-right: 10px;
+    color: #888;
+}
+
+.discount-percentage {
+    color: red;
+} */
+
+
+/* Product Detail styles to make it clean and align with your navbar and product card */
+
+.product-detail-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 32px;
+}
+
+.image-col {
+    text-align: center;
+}
+
+.product-image {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.info-col {
+    padding: 16px;
+}
+
+.product-title {
+    font-size: 1.8em;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.category {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 16px;
+}
+
+.price-details {
+    margin-bottom: 16px;
+}
+
+.rating-section {
+    margin-bottom: 16px;
+}
+
+.product-description {
+    margin-bottom: 32px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.add-to-cart-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.buy-now-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+/* Your existing styles can be included as well */
+
 .golden-star {
     color: gold;
 }

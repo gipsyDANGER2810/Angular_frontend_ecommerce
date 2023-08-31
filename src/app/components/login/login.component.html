@@ -1,7 +1,7 @@
-<div class="background">
+<!-- <div class="background">
     <div class="shape"></div>
     <div class="shape"></div>
-</div>
+</div> -->
 <!-- <form *ngIf="!isRegister">
 
     <h3>Login Here</h3>
@@ -36,17 +36,39 @@
 
 <div class="wrapper fadeInDown">
     <div id="formContent">
-      <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-      <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
-      <!-- Tabs Titles -->
-      <h3>Login</h3>
-  
-      <!-- Login Form -->
-      <form>
-        <input type="text" id="username" class="fadeIn second" [(ngModel)]="username" name="username" placeholder="username">
-        <input type="password" id="password" class="fadeIn third" [(ngModel)]="password" name="password" placeholder="password">
-        <input type="submit" (click)=handleLogin() class="fadeIn fourth" value="Log In">
-      </form>
-  
+        <div class="alert alert-warning amazon-alert" *ngIf='invalidLogin'>{{errorMessage}}</div>
+        <div class="alert alert-success amazon-alert" *ngIf='loginSuccess'>{{successMessage}}</div>
+        <!-- Tabs Titles -->
+        <div class="toggle-buttons">
+            <button class="toggle-btn" (click)="showForm('login')">Login</button>
+            <button class="toggle-btn" (click)="showForm('register')">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <div *ngIf="currentForm === 'login'">
+            <h3 class="amazon-title">Login</h3>
+            <form class="amazon-form">
+                <input type="text" id="loginUsername" class="amazon-input fadeIn second" [(ngModel)]="username" name="username"
+                    placeholder="username">
+                <input type="password" id="loginPassword" class="amazon-input fadeIn third" [(ngModel)]="password" name="password"
+                    placeholder="password">
+                <input type="submit" (click)="handleLogin()" class="amazon-btn fadeIn fourth" value="Log In">
+            </form>
+        </div>
+
+        <!-- Registration Form -->
+        <div *ngIf="currentForm === 'register'">
+            <h3 class="amazon-title">Register</h3>
+            <form class="amazon-form">
+                <input type="text" id="registerUsername" class="amazon-input fadeIn second" [(ngModel)]="registerUsername" name="registerUsername"
+                    placeholder="username">
+                <input type="email" id="registerEmail" class="amazon-input fadeIn third" [(ngModel)]="registerEmail" name="registerEmail"
+                    placeholder="email">
+                <input type="password" id="registerPassword" class="amazon-input fadeIn fourth" [(ngModel)]="registerPassword" name="registerPassword"
+                    placeholder="password">
+                <input type="submit" (click)="handleRegister()" class="amazon-btn fadeIn fourth" value="Register">
+            </form>
+        </div>
+
     </div>
-  </div>
+</div>

@@ -1,10 +1,11 @@
-<div *ngIf="productDetails" class="container mt-5">
+<!-- <div *ngIf="productDetails" class="container mt-5">
     <div class="row">
         <div class="col-md-6">
             <img [src]="productDetails.img_link" [alt]="productDetails.product_name" class="img-fluid">
         </div>
         <div class="col-md-6">
-            <h2 class="display-4" id="product_name">{{ productDetails.product_name }}</h2>
+            <h2 class="display-7" id="product_name">{{ productDetails.product_name }}</h2>
+
             <p class="text-muted" id="category">{{ productDetails.category }}</p>
 
             <h4>
@@ -15,12 +16,12 @@
             <p class="discount-percentage" id="discount_percentage">{{ (productDetails.discount_percentage*100).toFixed(0) }}% off</p>
 
             <p *ngIf="productDetails && productDetails.rating >= 0 && productDetails.rating <= 5">
-                <span id="rating">
+                <span id="rating"> -->
                     <!-- Display full stars -->
-                    <i class="fa fa-star golden-star" *ngFor="let _ of [].constructor(productDetails.rating)"></i>
+                    <!-- <i class="fa fa-star golden-star" *ngFor="let _ of [].constructor(productDetails.rating)"></i> -->
 
                     <!-- Display empty stars -->
-                    <i class="fa fa-star-o golden-star" *ngFor="let _ of [].constructor(5 - productDetails.rating)"></i>
+                    <!-- <i class="fa fa-star-o golden-star" *ngFor="let _ of [].constructor(5 - productDetails.rating)"></i>
                 </span>
                 {{ productDetails.rating }} out of 5 stars
             </p>
@@ -29,11 +30,40 @@
 
 
 
-            <p id="about_product">{{ productDetails.about_product }}</p>
+            <p id="about_product">{{ productDetails.about_product }}</p> -->
 
             <!-- Adjusted button size and added Buy Now button -->
-            <button class="btn btn-primary btn-sm mr-4">Add to Cart</button>
+            <!-- <button class="btn btn-primary btn-sm mr-4">Add to Cart</button>
             <button class="btn btn-success btn-sm ">Buy Now</button>
+        </div>
+    </div>
+</div> -->
+
+<div *ngIf="productDetails" class="container product-detail-container mt-5">
+    <div class="row">
+        <div class="col-md-6 image-col">
+            <img [src]="productDetails.img_link" [alt]="productDetails.product_name" class="img-fluid product-image">
+        </div>
+        <div class="col-md-6 info-col">
+            <h2 class="display-7 product-title" id="product_name">{{ productDetails.product_name }}</h2>
+            <p class="text-muted category" id="category">{{ productDetails.category }}</p>
+            <h4 class="price-details">
+                <span class="text-danger discounted-price" id="discounted_price">₹{{ productDetails.discounted_price }}</span>
+                <small class="text-muted actual-price" id="actual_price"><s>₹{{ productDetails.actual_price }}</s></small>
+            </h4>
+            <p class="discount-percentage" id="discount_percentage">{{ (productDetails.discount_percentage*100).toFixed(0) }}% off</p>
+            <p class="rating-section" *ngIf="productDetails && productDetails.rating >= 0 && productDetails.rating <= 5">
+                <span id="rating">
+                    <i class="fa fa-star golden-star" *ngFor="let _ of [].constructor(productDetails.rating)"></i>
+                    <i class="fa fa-star-o golden-star" *ngFor="let _ of [].constructor(5 - productDetails.rating)"></i>
+                </span>
+                {{ productDetails.rating }} out of 5 stars
+            </p>
+            <p class="product-description" id="about_product">{{ productDetails.about_product }}</p>
+            <div class="action-buttons">
+                <button class="btn btn-primary btn-sm add-to-cart-btn">Add to Cart</button>
+                <button class="btn btn-success btn-sm buy-now-btn">Buy Now</button>
+            </div>
         </div>
     </div>
 </div>

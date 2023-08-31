@@ -129,3 +129,63 @@
 }
 */
 
+.section-title {
+    font-size: 1.6em;
+    color: #333;
+    margin-bottom: 24px;
+  }
+  
+  .product-container {
+    background-color: #f8f9fa;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Loader styles */
+  .loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: 9999;
+    background-color: #f0f1f2;
+  }
+  
+  .loader-bar {
+    height: 100%;
+    width: 15%;
+    background-color: #007bff;
+    animation: loading 1.5s infinite;
+  }
+  
+  /* Product card styles */
+  .amazon-card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow .3s;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .amazon-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
+  /* Button styles in sync with your navbar */
+  .amazon-card-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+  
+  .amazon-cart-btn {
+    background-color: #f8f9fa;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+
+  .redirectToAbout, .pricing :hover{
+    cursor:pointer;
+  }

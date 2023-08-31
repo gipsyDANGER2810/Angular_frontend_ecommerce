@@ -11,12 +11,16 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class LoginComponent {
 
+  currentForm: 'login' | 'register' = 'login';
   username: string = '';
   password: string = '';
-  errorMessage = 'Invalid Credentials';
-  successMessage = 'Login Sucessful'
+  registerUsername: string = '';
+  registerEmail: string ='';
+  registerPassword: string='';
   invalidLogin = false;
   loginSuccess = false;
+  errorMessage = '';
+  successMessage = '';
   isRegister : boolean = false
 
   constructor(
@@ -25,21 +29,23 @@ export class LoginComponent {
     private authService : AuthService
     ) { }
 
+
+
   ngOnInit(): void {
   }
   onRegister() {
     // this.customerService.addUser(this.registerObj)
     console.log("REGISTERED")
   }
+  showForm(form: 'login' | 'register') {
+    this.currentForm = form;
+  }
+
   handleLogin() {
-    this.authService.login(this.username, this.password).subscribe((result) => {
-      this.invalidLogin = false;
-      this.loginSuccess = true;
-      this.successMessage
-      // redirect to main page
-    }, () => {
-      this.invalidLogin = true;
-      this.loginSuccess = false;
-    });
+    // Implement your login logic here
+  }
+
+  handleRegister() {
+    // Implement your registration logic here
   }
 }
