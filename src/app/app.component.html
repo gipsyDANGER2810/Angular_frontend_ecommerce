@@ -77,10 +77,11 @@
             Dropdown
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="onAllProductsClick()">All Products</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <button class="dropdown-item" (click)="onAllProductsClick()">All Products</button>
+            <ng-container *ngFor="let category of main_categories">
+              <a href="#">{{category | split: '&'}}</a>
+              <div class="dropdown-divider"></div>
+            </ng-container>
           </div>
         </li>
         <li class="nav-item">

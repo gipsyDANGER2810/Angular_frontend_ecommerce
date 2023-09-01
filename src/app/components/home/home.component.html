@@ -39,7 +39,7 @@
             <div class="amazon-card">
                 <div class="redirectToAbout" (click)="sendProductName(product.product_name , product.product_id)">
                     <img [src]="product.img_link" class="amazon-card-img" [alt]="product.name">
-                    <h5 class="amazon-card-title">{{ product.product_name }}</h5>
+                    <h5 class="amazon-card-title">{{ product.recommended_product.product_name }}</h5>
                     <p class="amazon-card-description">{{ product.about_product }}</p>
                 </div>
                 <div class="pricing" (click)="sendProductName(product.product_name , product.product_id)">

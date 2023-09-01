@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AboutProductComponent } from './components/about-product/about-product.component';
+import { SplitPipe } from './split.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AboutProductComponent } from './components/about-product/about-product.
     HomeComponent,
     CartComponent,
     LoginComponent,
-    AboutProductComponent
+    AboutProductComponent,
+    SplitPipe
   ],
   imports: [
     BrowserModule,
