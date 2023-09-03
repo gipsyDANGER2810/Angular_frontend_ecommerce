@@ -1,0 +1,41 @@
+.navbar {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.nav-item.active .nav-link,
+.nav-link:hover {
+    color: #007bff !important;
+}
+
+.search-bar {
+    width: 250px;
+}
+
+.cart-icon {
+    margin-left: 15px;
+}
+
+.fa-shopping-cart {
+    font-size: 1.2em;
+}
+
+/* Dropdown Custom Styles */
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-divider {
+    margin: 5px 0;
+}
+
+.badge {
+    position: relative;
+    top: -20px;
+    right: -20px;
+}
