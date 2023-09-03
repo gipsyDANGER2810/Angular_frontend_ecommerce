@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
   subscription: Subscription = new Subscription();
   allProduct :boolean = true
   content_list : any
+  page: number = 0;
+  size: number = 10;
+
 
   
 
@@ -46,18 +49,29 @@ export class HomeComponent implements OnInit {
 
   getAllProducts(){
     this.productService.currentView = 'POPULAR';
-      this.subscription = this.productService.refreshProducts.subscribe(() => {
-        this.productService.getAllProducts().subscribe((data)=>{
+      this.subscription = this.productService.refreshProducts.subscribe((data) => {
+        // this.productService.getAllProducts(this.page, this.size).subscribe((data)=>{
           this.productList = data
+          
+
           this.isLoading = false;
           
-        })
+          console.log(this.productList)
+        // )
       },
       (error) => {
         console.error('Error fetching products:', error);
       }
       );
-    
+  }
+  nextPage() {
+    this.page = this.page + 1;
+    this.getAllProducts();
+  }
+  
+  previousPage() {
+    this.page = this.page - 1;
+    this.getAllProducts();
   }
 
   loadProducts() {

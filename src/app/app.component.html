@@ -56,7 +56,7 @@
   <router-outlet></router-outlet>
 </div> -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">BrandName</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -78,10 +78,11 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <button class="dropdown-item" (click)="onAllProductsClick()">All Products</button>
+            <div class="dropdown-divider"></div>
             <ng-container *ngFor="let category of main_categories">
-              <a href="#">{{category | split: '&'}}</a>
-              <div class="dropdown-divider"></div>
-            </ng-container>
+              <button  class="dropdown-item">{{category | split: '&'}}</button>
+               <div class="dropdown-divider"></div> -->
+            <!-- </ng-container>
           </div>
         </li>
         <li class="nav-item">
@@ -105,7 +106,8 @@
       </div>
     </div>
   </div>
-</nav>
+</nav> --> 
+<app-navbar></app-navbar>
 <div class="container">
   <router-outlet></router-outlet>
 </div>

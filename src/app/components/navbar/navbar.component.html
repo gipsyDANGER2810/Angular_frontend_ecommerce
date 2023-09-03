@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">BrandName</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <!-- <button class="dropdown-item" (click)="onAllProductsClick()">Categories</button> -->
+                        <!-- <div class="dropdown-divider"></div> -->
+                        <ng-container *ngFor="let category of main_categories">
+                            <button class="dropdown-item">{{category | split: '&'}}</button>
+                            <!-- <div class="dropdown-divider"></div> -->
+                        </ng-container>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                </li>
+            </ul>
+            <form class="d-flex search-bar">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+            <div class="dropdown cart-icon">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="cartDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span *ngIf="cartItemCount > 0" class="badge bg-primary">{{ cartItemCount }}</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
+                    <a class="dropdown-item" *ngFor="let item of cartItems" href="#">{{ item.product_name }}</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" [routerLink]="['/cart']">View Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

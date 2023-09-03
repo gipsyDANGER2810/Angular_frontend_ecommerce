@@ -15,7 +15,7 @@ export class ProductService {
   private productSource = new BehaviorSubject<string>('');
   currentProduct = this.productSource.asObservable();
 
-  private refreshProductsSource = new Subject<void>();
+  private refreshProductsSource = new Subject<any>();
   refreshProducts = this.refreshProductsSource.asObservable();
 
   currentView: 'ALL' | 'POPULAR' = 'POPULAR';
@@ -31,8 +31,6 @@ export class ProductService {
   }
 
   getProductById(product_name: string) {
-
-    console.log(product_name)
     return this.http.get(`http://localhost:8080/api/products/${product_name}`)
   }
 
@@ -41,8 +39,8 @@ export class ProductService {
   }
 
 
-  getAllProducts() {
-    return this.http.get(`http://localhost:8080/api/products`)
+  getAllProducts(page: number, size: number) {
+    return this.http.get(`http://localhost:8080/api/products?page=${page}&size=${size}`)
   }
 
   getAllCategories() {

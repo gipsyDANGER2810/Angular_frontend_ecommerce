@@ -1,20 +1,20 @@
-<!-- cart.component.html -->
 
-<!-- <div class="container">
+
+<div class="container">
     <div class="cart">
         <h2>Your Shopping Cart</h2>
         <ul class="cart-list">
-            <li *ngFor="let item of cartItems" class="cart-item">
+            <li *ngFor="let item of item" class="cart-item">
                 <div class="item-image">
-                    <img [src]="item.image" alt="{{ item.name }}">
+                    <img [src]="item.img_link" alt="{{ item.name }}">
                 </div>
                 <div class="item-info">
-                    <h3>{{ item.name }}</h3>
+                    <h3>{{ item.product_name }}</h3>
                     <span>Price: ${{ item.price }}</span>
                     <span>Quantity: {{ item.quantity }}</span>
                 </div>
                 <div class="item-action">
-                    <button class="remove-button" (click)="removeItem(item.id)">Remove</button>
+                    <!-- <button class="remove-button" (click)="removeItem(item.id)">Remove</button> -->
                 </div>
             </li>
         </ul>
@@ -27,6 +27,6 @@
         </div>
         <button class="checkout-button">Proceed to Checkout</button>
     </div>
-</div> -->
+</div>
 
 

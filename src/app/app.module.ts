@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AboutProductComponent } from './components/about-product/about-product.component';
 import { SplitPipe } from './split.pipe';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SplitPipe } from './split.pipe';
     CartComponent,
     LoginComponent,
     AboutProductComponent,
-    SplitPipe
+    SplitPipe,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

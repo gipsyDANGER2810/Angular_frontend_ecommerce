@@ -12,11 +12,15 @@ export class CartComponent implements OnInit{
   cartItems = [];
   cartTotal = 0;
   productSubscription: Subscription = new Subscription;
+  item : any
 
   constructor( private cartService : CartService){}
 
   ngOnInit(): void {
   //  this.cartTotal = this.calculateTotal();
+  this.productSubscription = this.cartService.cartItem.subscribe((data) =>{
+    this.item=data
+  })
   }
 
 

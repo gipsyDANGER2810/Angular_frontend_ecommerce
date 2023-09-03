@@ -10,6 +10,7 @@ export class CartService {
   
   private cartItemCount = new BehaviorSubject(0);
   private cartItemsSubject = new BehaviorSubject<any[]>([]);
+  cartItem = this.cartItemsSubject.asObservable()
   
 
   constructor() { this.cartItemsSubject.next(this.cartItems);}
