@@ -1,51 +1,15 @@
-<!-- <div class="background">
-    <div class="shape"></div>
-    <div class="shape"></div>
-</div> -->
-<!-- <form *ngIf="!isRegister">
-
-    <h3>Login Here</h3>
-
-    <label for="username">Username</label>
-    <input type="text" name="userName" [(ngModel)]="username" placeholder="Email or Phone" id="username">
-
-    <label for="password">Password</label>
-    <input type="password" name="password" [(ngModel)]="password" placeholder="Password" id="password">
-
-    <button style="color: black" (click)="handleLogin()">Log In</button>
-    <div class="social">
-        <div class="go" (click)="isRegister = !isRegister"> <i class="fab fa-google"></i> Register</div>
-
-    </div>
-</form>
-
-<form *ngIf="isRegister">
-    <h3>Register Here</h3>
-    <label for="username">Username</label>
-    <input type="text" name="userName" [(ngModel)]="username" placeholder="Email or Phone" id="username">
-
-    <label for="password">Password</label>
-    <input type="password" name="password" [(ngModel)]="password" placeholder="Password" id="password">
-
-    <button style="color: black" (click)="onRegister()">Register</button>
-    <div class="social">
-        <div class="go" (click)="isRegister = !isRegister"> <i class="fab fa-google"></i> Login</div>
-
-    </div>
-</form> -->
-
-<div class="wrapper fadeInDown">
+<!-- <div class="wrapper fadeInDown">
     <div id="formContent">
         <div class="alert alert-warning amazon-alert" *ngIf='invalidLogin'>{{errorMessage}}</div>
-        <div class="alert alert-success amazon-alert" *ngIf='loginSuccess'>{{successMessage}}</div>
-        <!-- Tabs Titles -->
-        <div class="toggle-buttons">
+        <div class="alert alert-success amazon-alert" *ngIf='loginSuccess'>{{successMessage}}</div> -->
+<!-- Tabs Titles -->
+<!-- <div class="toggle-buttons">
             <button class="toggle-btn" (click)="showForm('login')">Login</button>
             <button class="toggle-btn" (click)="showForm('register')">Register</button>
-        </div>
+        </div> -->
 
-        <!-- Login Form -->
-        <div *ngIf="currentForm === 'login'">
+<!-- Login Form -->
+<!-- <div *ngIf="currentForm === 'login'">
             <h3 class="amazon-title">Login</h3>
             <form class="amazon-form">
                 <input type="text" id="loginUsername" class="amazon-input fadeIn second" [(ngModel)]="username" name="username"
@@ -54,10 +18,10 @@
                     placeholder="password">
                 <input type="submit" (click)="handleLogin()" class="amazon-btn fadeIn fourth" value="Log In">
             </form>
-        </div>
+        </div> -->
 
-        <!-- Registration Form -->
-        <div *ngIf="currentForm === 'register'">
+<!-- Registration Form -->
+<!-- <div *ngIf="currentForm === 'register'">
             <h3 class="amazon-title">Register</h3>
             <form class="amazon-form">
                 <input type="text" id="registerUsername" class="amazon-input fadeIn second" [(ngModel)]="registerUsername" name="registerUsername"
@@ -70,5 +34,57 @@
             </form>
         </div>
 
+    </div>
+</div> -->
+
+<div class="container custom-container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 custom-card">
+            <div class="alert-section mb-4">
+                <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+                <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+            </div>
+
+            <div class="toggle-buttons mb-4 d-flex justify-content-center">
+                <button class="btn custom-btn mx-2" (click)="showForm('login')">Login</button>
+                <button class="btn custom-btn mx-2" (click)="showForm('register')">Register</button>
+            </div>
+
+            <!-- Login Form -->
+            <div *ngIf="currentForm === 'login'" class="form-container">
+                <h3 class="form-title mb-4">Login</h3>
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control custom-input" [(ngModel)]="username" name="username"
+                            placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control custom-input" [(ngModel)]="password" name="password"
+                            placeholder="Password">
+                    </div>
+                    <button type="submit" (click)="handleLogin()" class="btn custom-btn">Log In</button>
+                </form>
+            </div>
+
+            <!-- Registration Form -->
+            <div *ngIf="currentForm === 'register'" class="form-container">
+                <h3 class="form-title mb-4">Register</h3>
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control custom-input" [(ngModel)]="registerUsername"
+                            name="registerUsername" placeholder="Username">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control custom-input" [(ngModel)]="registerEmail"
+                            name="registerEmail" placeholder="Email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control custom-input" [(ngModel)]="registerPassword"
+                            name="registerPassword" placeholder="Password">
+                    </div>
+                    <button type="submit" (click)="handleRegister()" class="btn custom-btn">Register</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

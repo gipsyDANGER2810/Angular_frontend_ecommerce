@@ -20,8 +20,10 @@ export class CartComponent implements OnInit{
   //  this.cartTotal = this.calculateTotal();
   this.productSubscription = this.cartService.cartItem.subscribe((data) =>{
     this.item=data
+    console.log(this.item)
   })
   }
+
 
 
 

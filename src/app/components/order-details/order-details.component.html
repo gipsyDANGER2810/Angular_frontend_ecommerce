@@ -1,0 +1,50 @@
+<div class="wrapper amazon-wrapper">
+    <div id="order-details" class="amazon-card">
+        <h2 class="amazon-title">Order Details</h2>
+
+        <div class="order-info amazon-section">
+            <h4 class="amazon-subtitle">Order Information</h4>
+            <div class="amazon-text">Order ID: <span>123456</span></div>
+            <div class="amazon-text">Order Date: <span>September 03, 2023</span></div>
+            <div class="amazon-text">Order Status: <span>{{orderStatus}}</span></div>
+            <div *ngIf="orderStatus === 'Delivered'">
+                <button (click)="requestReview()">Write a Review</button>
+            </div>
+            <div *ngIf="showReview">
+                <textarea placeholder="Write your review here..."></textarea>
+            </div>
+        </div>
+        <div *ngIf="tracking">
+            <h4 class="amazon-subtitle">Tracking Order</h4>
+            <div class="tracking-bar">
+                <ol class="progtrckr" data-progtrckr-steps="5">
+                    <li class="progtrckr-done">Order Processing</li>
+
+                    <li class="progtrckr-done">Pre-Production</li>
+
+                    <li class="progtrckr-done">In Production</li>
+
+                    <li class="progtrckr-todo">Shipped</li>
+
+                    <li class="progtrckr-todo">Delivered</li>
+                </ol>
+            </div>
+        </div>
+        <div class="order-products amazon-section">
+            <h4 class="amazon-subtitle">Products</h4>
+            <div class="amazon-product" *ngFor="let product of item">
+                <img [src]="product.img_link" class="amazon-product-img" alt="Product Image">
+                <div class="amazon-product-details">
+                    <span class="amazon-product-name">{{product.product_name}}</span>
+                    <span class="amazon-product-price">${{product.actual_price}}</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-summary amazon-section">
+            <h4 class="amazon-subtitle">Order Summary</h4>
+            <div class="amazon-text">Total: <span>${{cartTotal}}</span></div>
+        </div>
+
+        <button routerLink="/orders" class="amazon-btn">Back to Orders</button>
+    </div>

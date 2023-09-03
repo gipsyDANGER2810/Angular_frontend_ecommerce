@@ -7,11 +7,15 @@ import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
 
 import {HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { AboutProductComponent } from './components/about-product/about-product.component';
 import { SplitPipe } from './split.pipe';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { UserProfilePageComponent } from './components/user-profile-page/user-profile-page.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +25,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LoginComponent,
     AboutProductComponent,
     SplitPipe,
-    NavbarComponent
+    NavbarComponent,
+    LoaderComponent,
+    CheckoutComponent,
+    UserProfilePageComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

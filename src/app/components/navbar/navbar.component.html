@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">BrandName</a>
+        <a class="navbar-brand" routerLink="/profile">BrandName</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" routerLink="/products">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
@@ -16,10 +16,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
+                        All Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <!-- <button class="dropdown-item" (click)="onAllProductsClick()">Categories</button> -->
+                        <!-- <button class="dropdown-item" >Categories</button> -->
                         <!-- <div class="dropdown-divider"></div> -->
                         <ng-container *ngFor="let category of main_categories">
                             <button class="dropdown-item">{{category | split: '&'}}</button>
@@ -27,13 +27,15 @@
                         </ng-container>
                     </div>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
+                </li> -->
             </ul>
             <form class="d-flex search-bar">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" [formControl]="searchControl" type="search" placeholder="Search"
+                    aria-label="Search">
             </form>
+
             <div class="dropdown cart-icon">
                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="cartDropdown"
                     data-bs-toggle="dropdown" aria-expanded="false">
@@ -41,7 +43,12 @@
                     <span *ngIf="cartItemCount > 0" class="badge bg-primary">{{ cartItemCount }}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
-                    <a class="dropdown-item" *ngFor="let item of cartItems" href="#">{{ item.product_name }}</a>
+                    <a class="dropdown-item" *ngFor="let item of cartItems" href="#">
+                        <div class="d-flex align-items-center">
+                            <img (click)="productDetails(item)" [src]="item.img_link" class="amazon-card-img-small" [alt]="item.name">
+                            <div class="product-name ml-2">{{ item.product_name }}</div>
+                        </div>
+                    </a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" [routerLink]="['/cart']">View Cart</a>
                 </div>

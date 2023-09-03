@@ -39,3 +39,59 @@
     top: -20px;
     right: -20px;
 }
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* .search-container {
+    position: relative;
+    
+}
+
+.suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    background: white;
+    border: 1px solid #ccc;
+    width: calc(100% - 2px);
+
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.suggestion-item {
+    padding: 8px;
+    cursor: pointer;
+} */
+
+.amazon-card-img {
+    max-width: 50px;
+    /* Adjust as needed */
+    max-height: 50px;
+    /* Adjust as needed */
+    object-fit: cover;
+    /* Keeps aspect ratio */
+}
+
+.amazon-card-img-small {
+    width: 50px;
+    /* Adjust as needed */
+    height: 50px;
+    /* Adjust as needed */
+    object-fit: cover;
+    /* This will ensure the aspect ratio of the images is maintained */
+}
+
+.product-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100px;
+    /* Adjust as needed */
+    margin: 0;
+}

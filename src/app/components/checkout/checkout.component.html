@@ -1,0 +1,46 @@
+<div class="container mt-5 mb-5">
+    <h2 class="section-title">Checkout</h2>
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="checkout-card">
+                <h4 class="checkout-subtitle">Shipping Information</h4>
+                <form class="checkout-form">
+                    <input type="text" class="checkout-input" placeholder="Full Name">
+                    <input type="text" class="checkout-input" placeholder="Address">
+                    <input type="text" class="checkout-input" placeholder="City">
+                    <input type="text" class="checkout-input" placeholder="Postal Code">
+                    <input type="text" class="checkout-input" placeholder="Country">
+                </form>
+            </div>
+
+            <div class="checkout-card">
+                <h4 class="checkout-subtitle">Payment Method</h4>
+                <!-- Your Payment form here -->
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="amazon-card checkout-card">
+                <h4 class="checkout-subtitle">Order Summary</h4>
+                <div class="order-item" *ngFor="let item of item"> <!-- Fixed the loop -->
+                    <div class="checkout-item-image">
+                        <img [src]="item.img_link" alt="{{ item.product_name }}">
+                    </div>
+                    <div class="checkout-item-info">
+                        <span class="checkout-item-name">{{ item.product_name }}</span>
+                        <div>
+                            <span class="checkout-item-price">${{ item.actual_price }}</span>
+
+                        </div>
+                    </div>
+                </div>
+                <hr class="checkout-hr">
+                <div class="total">
+                    <span>Total:</span>
+                    <span class="checkout-total-price">{{cartTotal}}</span>
+                </div>
+                <button routerLink="/orderdetails" class="checkout-button amazon-card-btn">Complete Order</button>
+            </div>
+        </div>
+    </div>
+</div>
