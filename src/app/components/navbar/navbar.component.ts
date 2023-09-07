@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
   main_categories : any[] = [];
   searchControl = new FormControl();
   suggestions: string[] = [];
-
+  category_list: any;
   constructor(private productService:ProductService , private cartService: CartService, private router : Router){
     this.cartService.getCartItemCount().subscribe(count => {
       this.cartItemCount = count;
@@ -33,15 +33,31 @@ export class NavbarComponent implements OnInit {
     this.subscription = this.productService.getAllCategories().subscribe(
       (data: any) => {
         console.log(Object.keys(data.categories))
+        this.category_list = data.categories
         this.main_categories = Object.keys(data.categories)
         console.log(this.main_categories)
+        console.log(this.category_list)
       }
       );
-    
+      this.searchControl.valueChanges.subscribe(value => {
+        this.search(value);
+      });
   }
 
   productDetails(product_id : any){
     this.productService.changeProduct(product_id)
     this.router.navigate(['aboutProduct']);
+  }
+
+  getCategory(category:string){
+    console.log(category);
+    console.log(this.category_list[category])
+    this.router.navigate(['products', category])
+  }
+  search(value : string){
+    this.productService.searchProduct(value).subscribe((data)=>{
+      console.log(data)
+    })
+    
   }
 }

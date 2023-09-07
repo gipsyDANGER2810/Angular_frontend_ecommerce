@@ -38,6 +38,7 @@ const routes: Routes = [
     path:"orderdetails",
     component:OrderDetailsComponent
   },
+  { path: 'products/:category', component: HomeComponent },
   {
     path:"",
     component:LoginComponent

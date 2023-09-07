@@ -75,7 +75,7 @@
                     <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}% off</span>
                 </div>
                 <div class="amazon-card-footer">
-                    <a href="#" class="btn btn-primary amazon-card-btn">Buy Now</a>
+                    <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy Now</button>
                     <button (click)="addToCart(product)" class="btn btn-secondary amazon-cart-btn"><i
                             class="fa fa-cart-plus"></i></button>
 

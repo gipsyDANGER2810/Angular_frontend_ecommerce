@@ -22,7 +22,8 @@
                         <!-- <button class="dropdown-item" >Categories</button> -->
                         <!-- <div class="dropdown-divider"></div> -->
                         <ng-container *ngFor="let category of main_categories">
-                            <button class="dropdown-item">{{category | split: '&'}}</button>
+                            <button class="dropdown-item" data-bs-toggle="dropdown" aria-expanded="false" (click)="getCategory(category)">{{category | split: '&'}}
+                            </button>
                             <!-- <div class="dropdown-divider"></div> -->
                         </ng-container>
                     </div>
@@ -43,7 +44,7 @@
                     <span *ngIf="cartItemCount > 0" class="badge bg-primary">{{ cartItemCount }}</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cartDropdown">
-                    <a class="dropdown-item" *ngFor="let item of cartItems" href="#">
+                    <a class="dropdown-item" *ngFor="let item of cartItems" routerLink="/aboutProduct">
                         <div class="d-flex align-items-center">
                             <img (click)="productDetails(item)" [src]="item.img_link" class="amazon-card-img-small" [alt]="item.name">
                             <div class="product-name ml-2">{{ item.product_name }}</div>
