@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CustomerService } from 'src/app/services/customer.service';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -29,7 +30,8 @@ export class LoginComponent {
     private router: Router, private http: HttpClient, 
     private customerService:CustomerService,
     private authService : AuthService,
-    private productService : ProductService
+    private productService : ProductService,
+    private loginService : LoginServiceService
     ) { }
 
 
@@ -47,7 +49,7 @@ export class LoginComponent {
   handleLogin( userName: string , pwd : string) {
     // Implement your login logic here
     if (!this.username || !this.password) {
-      console.log("Maa Chudao")
+      console.log("Login unsuccessful")
       // return "lund hilla ab";
     }
     this.username = userName;
@@ -57,12 +59,26 @@ export class LoginComponent {
       this.JWT = data.jwt
 
       if(this.JWT){
-        this.productService.getRecommendedProducts(data.user.userId)
-        console.log("USERID :", data.user.userId)
-        this.router.navigate(["products"])
+        
+        this.productService.getRecommendedProducts(data.user.userId).subscribe((data)=>{
+          this.productService.setRecommendedProducts(data);
+          localStorage.setItem('userToken', this.JWT);
+          this.loginService.setLoginState(this.JWT);
+          console.log('API Response:', data);
+          this.router.navigate(["products"])
+        }, error => {
+          console.error('API Error:', error);
+        }
+        );
       }
     })
   }
+
+  logout() {
+    this.loginService.logout();
+    // navigate user to login or another page...
+  }
+  
 
   handleRegister() {
     // Implement your registration logic here

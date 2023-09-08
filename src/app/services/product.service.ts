@@ -17,6 +17,12 @@ export class ProductService {
 
   private refreshProductsSource = new Subject<any>();
   refreshProducts = this.refreshProductsSource.asObservable();
+
+  // private recommendedProductsSource = new BehaviorSubject<any>(null);
+  // recommendedProducts = this.recommendedProductsSource.asObservable();
+
+recommendedProducts : any
+
  
   currentView: 'ALL' | 'POPULAR' = 'POPULAR';
 
@@ -31,11 +37,10 @@ export class ProductService {
 
   getRecommendedProducts(userId :string){
     const encodedUserId = encodeURIComponent(userId);
-    console.log("USER ID RECD : ", userId);
-    console.log("USER ID ENCODED : ", encodedUserId)
-    console.log("URL : "+ `http://127.0.0.1:5000/recommend?userid=${encodedUserId}`)
-  return this.http.get(`http://127.0.0.1:5000/recommend?userid=402881598a6c8138018a6c8191ff0000`);
-  // return this.http.get(`http://127.0.0.1:5000/recommend?user_id=${encodedUserId}`);
+    // console.log("USER ID RECD : ", userId);
+    // console.log("USER ID ENCODED : ", encodedUserId)
+    // console.log("URL : "+ `http://127.0.0.1:5000/recommend?userid=${encodedUserId}`)
+    return this.http.get(`http://127.0.0.1:5000/recommend?userid=${encodedUserId}`);
 
   }
 
@@ -66,6 +71,13 @@ export class ProductService {
 
   searchProduct(data : any){
     return this.http.get(`http://localhost:8080/api/products?search=${data}`)
+  }
+// for sending data towards home component after login
+  setRecommendedProducts(data: any): void {
+    this.recommendedProducts = data
+  }
+  getRecommendedProduct(): any {
+    return this.recommendedProducts;
   }
 
 

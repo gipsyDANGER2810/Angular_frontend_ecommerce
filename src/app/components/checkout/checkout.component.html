@@ -39,7 +39,7 @@
                     <span>Total:</span>
                     <span class="checkout-total-price">{{cartTotal}}</span>
                 </div>
-                <button routerLink="/orderdetails" class="checkout-button amazon-card-btn">Complete Order</button>
+                <button (click)="checkLogin()" routerLink="/orderdetails" class="checkout-button amazon-card-btn">Complete Order</button>
             </div>
         </div>
     </div>

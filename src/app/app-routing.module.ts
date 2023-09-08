@@ -41,7 +41,7 @@ const routes: Routes = [
   { path: 'products/:category', component: HomeComponent },
   {
     path:"",
-    component:LoginComponent
+    component:HomeComponent
   }
 ];
 

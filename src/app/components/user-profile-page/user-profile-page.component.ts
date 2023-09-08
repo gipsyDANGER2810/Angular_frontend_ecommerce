@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginServiceService } from 'src/app/services/login-service.service';
 
 @Component({
   selector: 'app-user-profile-page',
@@ -7,15 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfilePageComponent implements OnInit{
   user = {
-    name: 'John Doe',
+    name: '',
     email: 'john.doe@example.com',
     bio: 'I am a software developer.',
     profileImage: 'https://via.placeholder.com/150'
   };
 
-  constructor() { }
+  constructor( 
+    private loginService:LoginServiceService,
+    private router:Router
+    ) { }
 
   ngOnInit(): void {
+    
   }
 
+
+
+  logout(){
+    this.loginService.logout()
+    this.router.navigate(['/products'])
+  }
 }

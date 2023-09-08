@@ -32,27 +32,28 @@
     <!-- <app-loader></app-loader> -->
     <div class="loader-bar"></div>
 </div>
-
-<h2 class="text-center section-title" style="margin-top: 20px;">Recommended For You!</h2>
-<div class="container product-container">
-    <div class="row">
-        <div class="col-md-4 product-col" *ngFor="let product of content_list">
-            <div class="amazon-card">
-                <div class="redirectToAbout" (click)="sendProductName(product.product_name , product.product_id)">
-                    <img [src]="product.img_link" class="amazon-card-img" [alt]="product.name">
-                    <h5 class="amazon-card-title">{{ product.recommended_product.product_name }}</h5>
-                    <p class="amazon-card-description">{{ product.about_product }}</p>
-                </div>
-                <div class="pricing" (click)="sendProductName(product.product_name , product.product_id)">
-                    <span class="discounted-price">₹ {{ product.discounted_price }}</span>
-                    <span class="actual-price">₹ <s>{{ product.actual_price }}</s></span>
-                    <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}% off</span>
-                </div>
-                <div class="amazon-card-footer">
-                    <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy
-                        Now</button>
-                    <button (click)="addToCart(product)" class="btn btn-secondary amazon-cart-btn"><i
-                            class="fa fa-cart-plus"></i></button>
+<div *ngIf="content_list.length > 1">
+    <h2 class="text-center section-title" style="margin-top: 20px;">Based On Your Past Purchases</h2>
+    <div class="container product-container">
+        <div class="row">
+            <div class="col-md-4 product-col" *ngFor="let product of content_list">
+                <div class="amazon-card">
+                    <div class="redirectToAbout" (click)="sendProductName(product.product_name , product.product_id)">
+                        <img [src]="product.recommended_product.img_link" class="amazon-card-img" [alt]="product.name">
+                        <h5 class="amazon-card-title">{{ product.recommended_product.product_name }}</h5>
+                        <p class="amazon-card-description">{{ product.about_product }}</p>
+                    </div>
+                    <div class="pricing" (click)="sendProductName(product.product_name , product.product_id)">
+                        <span class="discounted-price">₹ {{ product.recommended_product.discounted_price }}</span>
+                        <span class="actual-price">₹ <s>{{ product.recommended_product.actual_price }}</s></span>
+                        <span class="discount-percentage">{{ (product.recommended_product.discount_percentage * 100).toFixed(0) }}% off</span>
+                    </div>
+                    <div class="amazon-card-footer">
+                        <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy
+                            Now</button>
+                        <button (click)="addToCart(product)" class="btn btn-secondary amazon-cart-btn"><i
+                                class="fa fa-cart-plus"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
