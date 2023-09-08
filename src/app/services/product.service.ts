@@ -80,5 +80,10 @@ recommendedProducts : any
     return this.recommendedProducts;
   }
 
+  filteredProducts(category : string){
+    const cat = encodeURIComponent(category)
+    return this.http.get(`http://localhost:8080/api/products/category?category=${cat}`)
+  }
+
 
 }

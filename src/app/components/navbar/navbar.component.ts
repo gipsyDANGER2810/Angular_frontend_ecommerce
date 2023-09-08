@@ -52,6 +52,9 @@ export class NavbarComponent implements OnInit {
   getCategory(category:string){
     console.log(category);
     console.log(this.category_list[category])
+    this.productService.filteredProducts(category).subscribe((data)=>{
+      console.log(data)
+    })
     this.router.navigate(['products', category])
   }
   search(value : string){

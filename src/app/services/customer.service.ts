@@ -21,22 +21,20 @@ export class CustomerService {
     );
   }
 
-
-  // getUSer(UserId : any){
-  //   return this.http.post(`http://localhost:8080/api/customer`,UserId).subscribe(result =>{
-  //     if (result == UserId){
-        
-  //     }
-  //   })
-
-  // }
-
   loginUser(username:string,password:string){
     const body ={
       'username' : username,
       'password' : password
     }
     return this.http.post(`http://localhost:8080/auth/login`,body)
+  }
+
+  registerUser(username:string,password:string){
+    const body ={
+      'username' : username,
+      'password' : password
+    }
+    return this.http.post(`http://localhost:8080/auth/register` , body)
   }
 
 

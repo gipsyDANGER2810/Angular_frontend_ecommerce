@@ -60,9 +60,10 @@ export class LoginComponent {
 
       if(this.JWT){
         
-        this.productService.getRecommendedProducts(data.user.userId).subscribe((data)=>{
+        this.productService.getRecommendedProducts(data.user.userId).subscribe((data:any)=>{
           this.productService.setRecommendedProducts(data);
           localStorage.setItem('userToken', this.JWT);
+          localStorage.setItem('userID', data.userId);
           this.loginService.setLoginState(this.JWT);
           console.log('API Response:', data);
           this.router.navigate(["products"])
@@ -80,7 +81,15 @@ export class LoginComponent {
   }
   
 
-  handleRegister() {
-    // Implement your registration logic here
+  handleRegister(userNameRegister : string , passwordRegister : string) {
+    this.username = userNameRegister;
+    this.password = passwordRegister;
+    this.customerService.registerUser(this.username,this.password).subscribe((data) => {
+      console.log("Register Successful")
+    },
+    error =>{
+      console.error('API Error:', error)
+    }
+    )
   }
 }

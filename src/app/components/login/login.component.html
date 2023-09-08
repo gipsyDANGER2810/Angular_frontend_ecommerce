@@ -74,15 +74,15 @@
                         <input type="text" class="form-control custom-input" [(ngModel)]="registerUsername"
                             name="registerUsername" placeholder="Username">
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <input type="email" class="form-control custom-input" [(ngModel)]="registerEmail"
                             name="registerEmail" placeholder="Email">
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <input type="password" class="form-control custom-input" [(ngModel)]="registerPassword"
                             name="registerPassword" placeholder="Password">
                     </div>
-                    <button type="submit" (click)="handleRegister()" class="btn custom-btn">Register</button>
+                    <button type="submit" (click)="handleRegister(registerUsername,registerPassword)" class="btn custom-btn">Register</button>
                 </form>
             </div>
         </div>
