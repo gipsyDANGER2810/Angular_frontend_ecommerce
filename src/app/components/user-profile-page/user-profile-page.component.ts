@@ -10,7 +10,7 @@ import { LoginServiceService } from 'src/app/services/login-service.service';
 })
 export class UserProfilePageComponent implements OnInit{
   user : any 
-
+  showPastPurchases = false;
   userId : string =''
 
   constructor( 
@@ -31,6 +31,11 @@ export class UserProfilePageComponent implements OnInit{
         })
     }
     
+  }
+
+  togglePastPurchases() {
+    this.showPastPurchases = !this.showPastPurchases;
+
   }
 
 

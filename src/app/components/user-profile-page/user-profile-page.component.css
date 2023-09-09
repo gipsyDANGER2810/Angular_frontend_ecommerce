@@ -30,3 +30,12 @@
 .profile-details strong {
     color: #007bff;
 }
+
+.amazon-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+/* ... Rest of your styles from the previous CSS ... */

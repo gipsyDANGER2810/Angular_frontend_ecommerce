@@ -1,12 +1,29 @@
-<div class="profile-section">
-    <div class="profile-header">
-      <img src="https://cdn3d.iconscout.com/3d/premium/thumb/verified-profile-9305221-7647858.png" alt="https://cdn3d.iconscout.com/3d/premium/thumb/verified-profile-9305221-7647858.png" class="profile-image">
-      <h1>{{ user.username }}</h1>
-    </div>
-    <div class="profile-details">
-      <p><strong>Email:</strong> {{ user.email }}</p>
-      <p><strong>Bio:</strong> {{ user.bio }}</p>
-      <button (click)="logout()"> Logout</button>
-    </div>
+<div class="container">
+  <div class="row">
+      <div class="col-md-4 product-col">
+          <div class="profile-section">
+              <div class="profile-header">
+                  <img [src]="user.profileImage" alt="User Profile Image" class="profile-image">
+                  <h5>{{ user.username }}</h5>
+              </div>
+              <div class="profile-details">
+                  <p><strong>Email:</strong> {{ user.email }}</p>
+                  <p><strong>Bio:</strong> {{ user.bio || 'User has not provided a bio yet.' }}</p>
+              </div>
+              <div class="amazon-card-footer">
+                  <button (click)="logout()" class="btn btn-primary amazon-card-btn">Logout</button>
+                  <button class="btn btn-secondary amazon-cart-btn" (click)="togglePastPurchases()">Past Purchases</button>
+              </div>
+          </div>
+          <div class="amazon-card" *ngIf="showPastPurchases">
+              <h5 class="amazon-card-title">Past Purchases:</h5>
+              <ul>
+                  <li class="amazon-card-description" *ngFor="let purchase of user">{{ purchase.user.reviews.productId }}</li>
+              </ul>
+          </div>
+      </div>
   </div>
+</div>
+
+
   
