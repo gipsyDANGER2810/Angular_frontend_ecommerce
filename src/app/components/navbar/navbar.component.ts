@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { CustomerService } from 'src/app/services/customer.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -18,7 +19,15 @@ export class NavbarComponent implements OnInit {
   searchControl = new FormControl();
   suggestions: string[] = [];
   category_list: any;
-  constructor(private productService:ProductService , private cartService: CartService, private router : Router){
+  userID : string = 'null'
+
+  constructor(
+    private productService:ProductService,
+    private cartService: CartService, 
+    private router : Router,
+    private customerService : CustomerService
+    )
+  {
     this.cartService.getCartItemCount().subscribe(count => {
       this.cartItemCount = count;
     });
@@ -62,5 +71,9 @@ export class NavbarComponent implements OnInit {
       console.log(data)
     })
     
+  }
+
+  userProfile(){
+    this.router.navigate(['/profile'])
   }
 }

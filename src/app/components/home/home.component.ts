@@ -50,6 +50,7 @@ export class HomeComponent implements OnInit {
           console.log(recommended)
             this.productList = recommended.first_set;
             this.content_list = recommended.second_set;
+            this.isLoading=false
         } else if (!this.loginService.currentLoginState) {
             // Load products if there are no recommendations and the user is not logged in
             this.loadProducts();

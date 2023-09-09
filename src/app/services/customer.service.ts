@@ -37,5 +37,9 @@ export class CustomerService {
     return this.http.post(`http://localhost:8080/auth/register` , body)
   }
 
+  getUserById(userId : string){
+    return this.http.get(`http://localhost:8080/api/customer/${userId}`)
+  }
+
 
 }

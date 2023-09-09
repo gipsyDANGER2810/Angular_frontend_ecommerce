@@ -16,6 +16,7 @@ export class LoginComponent {
   currentForm: 'login' | 'register' = 'login';
   username: string = '';
   password: string = '';
+  userId : string = ''
   registerUsername: string = '';
   registerEmail: string ='';
   registerPassword: string='';
@@ -55,15 +56,17 @@ export class LoginComponent {
     this.username = userName;
     this.password = pwd;
     this.customerService.loginUser(this.username,this.password).subscribe((data : any)=>{
+      console.log("login successful")
       console.log(data)
       this.JWT = data.jwt
+      this.userId = data.user.userId
 
       if(this.JWT){
         
-        this.productService.getRecommendedProducts(data.user.userId).subscribe((data:any)=>{
-          this.productService.setRecommendedProducts(data);
+        this.productService.getRecommendedProducts(data.user.userId).subscribe((response:any)=>{
+          this.productService.setRecommendedProducts(response);
           localStorage.setItem('userToken', this.JWT);
-          localStorage.setItem('userID', data.userId);
+          localStorage.setItem('userID', this.userId);
           this.loginService.setLoginState(this.JWT);
           console.log('API Response:', data);
           this.router.navigate(["products"])

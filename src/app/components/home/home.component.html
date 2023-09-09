@@ -32,9 +32,14 @@
     <!-- <app-loader></app-loader> -->
     <div class="loader-bar"></div>
 </div>
+<div *ngIf="isLoading"  class="loader-overlay">
+    <app-loader></app-loader> 
+</div>
 <div *ngIf="content_list.length > 1">
+
     <h2 class="text-center section-title" style="margin-top: 20px;">Based On Your Past Purchases</h2>
     <div class="container product-container">
+
         <div class="row">
             <div class="col-md-4 product-col" *ngFor="let product of content_list">
                 <div class="amazon-card">
