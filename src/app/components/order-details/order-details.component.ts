@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
   selector: 'app-order-details',
@@ -13,17 +14,22 @@ export class OrderDetailsComponent implements OnInit {
   item: any
   cartTotal !: number
 
+  reviewTitle : string = ''
+  reviewContent : string = ''
+
   orderStatus: string = 'Processing';
   showReview: boolean = false;
   tracking: boolean = false;
+  productId: string = '';
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private reviewService : ReviewService) { }
 
   ngOnInit(): void {
     //  this.cartTotal = this.calculateTotal();
     this.startTracking();
     this.productSubscription = this.cartService.cartItem.subscribe((data) => {
       this.item = data
+      console.log(data)
       this.cartTotal = this.calculateTotal();
 
     })
@@ -54,6 +60,34 @@ export class OrderDetailsComponent implements OnInit {
   requestReview() {
     this.showReview = true;
   }
+
+  toggleReviewForProduct(product : any) {
+    product.showReview = !product.showReview; // toggle the review form for the given product
+  }
+
+  submitReview(productId : string , reviewTitle : string , reviewContent : string){
+    const userId = localStorage.getItem('userID')
+    this.reviewTitle = reviewTitle
+    this.reviewContent = reviewContent
+    this.productId = productId
+    const body = {
+      productId,
+      userId,
+     reviewTitle,
+      reviewContent
+    }
+    console.log(body)
+    this.reviewService.addReview(body).subscribe((data)=>{
+      console.log(data)
+    })
+  }
+
+  
+  
+  
+  
+  
+  
 
 
 }

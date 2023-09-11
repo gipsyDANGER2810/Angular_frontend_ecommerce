@@ -48,8 +48,8 @@ export class HomeComponent implements OnInit {
       // this.productService.recommendedProducts.subscribe((recommended) => {
         if (recommended) {
           console.log(recommended)
-            this.productList = recommended.first_set;
-            this.content_list = recommended.second_set;
+            this.productList = recommended.Popular_products;
+            this.content_list = recommended.content_based_products;
             this.isLoading=false
         } else if (!this.loginService.currentLoginState) {
             // Load products if there are no recommendations and the user is not logged in
@@ -63,8 +63,8 @@ export class HomeComponent implements OnInit {
     console.log("Category selected : ", category)
     this.productService.getPopularProducts().pipe(retry(3)).subscribe(
       (result: any) => {
-        this.productList = result.first_set;
-        this.content_list = result.second_set;
+        this.productList = result.Popular_products;
+        this.content_list = result.content_based_products;
         this.isLoading = false;
 
       },
