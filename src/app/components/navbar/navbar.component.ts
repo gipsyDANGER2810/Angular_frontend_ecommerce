@@ -46,6 +46,7 @@ export class NavbarComponent implements OnInit {
         this.main_categories = Object.keys(data.categories)
         console.log(this.main_categories)
         console.log(this.category_list)
+        
       }
       );
       this.searchControl.valueChanges.subscribe(value => {

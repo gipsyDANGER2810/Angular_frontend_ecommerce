@@ -64,7 +64,7 @@ export class LoginComponent {
       if(this.JWT){
         
         this.productService.getRecommendedProducts(data.user.userId).subscribe((response:any)=>{
-          this.productService.setRecommendedProducts(response);
+          sessionStorage.setItem('productsForUser' , JSON.stringify(response))
           localStorage.setItem('userToken', this.JWT);
           localStorage.setItem('userID', this.userId);
           this.loginService.setLoginState(this.JWT);
@@ -80,6 +80,7 @@ export class LoginComponent {
 
   logout() {
     this.loginService.logout();
+    
     // navigate user to login or another page...
   }
   

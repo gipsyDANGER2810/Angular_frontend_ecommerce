@@ -3,7 +3,7 @@
         <div class="col-md-4 product-col">
             <div class="profile-section">
                 <div class="profile-header">
-                    <img [src]="user.profileImage" alt="User Profile Image" class="profile-image">
+                    <i class="fa-solid fa-user"></i>
                     <h5>{{ user.username }}</h5>
                 </div>
                 <div class="profile-details">
@@ -12,21 +12,28 @@
                 </div>
                 <div class="amazon-card-footer">
                     <button (click)="logout()" class="btn btn-primary amazon-card-btn">Logout</button>
-                    <button (click)="login()" class="btn btn-primary amazon-card-btn">Login</button>
+                    
+                        <button (click)="login()" class="btn btn-primary amazon-card-btn">Login</button>
+
+                    
                     <button class="btn btn-secondary amazon-cart-btn" (click)="togglePastPurchases()">Past
                         Purchases</button>
                 </div>
             </div>
             <div class="amazon-card" *ngIf="showPastPurchases">
                 <h5 class="amazon-card-title">Past Purchases:</h5>
-                <ul>
-                    <li class="amazon-card-description" *ngFor="let review of user.reviews">{{ review.productId }}</li>
+
+                <ul *ngIf="products && products.length > 0">
+                    <li class="amazon-card-description" *ngFor="let product of products">
+                        <img [src]="product.imgLink" alt="{{ product.productName }}" style="width: 50px; height: 50px;">
+                        <!-- Adjust width and height accordingly -->
+                        {{ product.productName }}
+                    </li>
                 </ul>
-                <ul>
-                    <li class="amazon-card-description" *ngIf="user.reviews == null">
+                <ul *ngIf="!products || products.length === 0">
+                    <li class="amazon-card-description">
                         No Past purchases
                     </li>
-
                 </ul>
             </div>
         </div>

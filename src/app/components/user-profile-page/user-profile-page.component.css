@@ -39,3 +39,43 @@
 }
 
 /* ... Rest of your styles from the previous CSS ... */
+
+.amazon-card {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.amazon-card-title {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #333; /* Darker text color for the title */
+    border-bottom: 1px solid #ccc; 
+    padding-bottom: 10px;
+}
+
+.amazon-card-description {
+    display: flex;
+    align-items: center; /* Center align the image and text vertically */
+    margin-bottom: 15px;
+}
+
+.amazon-card-description img {
+    margin-right: 10px; /* Space between the image and text */
+    border-radius: 8px; /* Rounded corners for the product image */
+}
+
+/* Hover effect for each list item */
+.amazon-card-description:hover {
+    background-color: #e8e9ea; 
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    padding: 5px;
+}
+
+.profile-image-icon {
+    font-size: 120px; /* this controls the icon size, adjust as needed */
+    color: #007bff;  /* this controls the icon color, adjust as needed */
+}

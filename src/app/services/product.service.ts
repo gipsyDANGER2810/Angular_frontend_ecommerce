@@ -86,5 +86,9 @@ recommendedProducts : any
     return this.http.get(`http://localhost:8080/api/products/category?category=${cat}`)
   }
 
+  getProductDetails(product : any){
+    return this.http.post(`http://localhost:8080/api/products/details` , product)
+  }
+
 
 }

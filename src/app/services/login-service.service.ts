@@ -26,6 +26,7 @@ export class LoginServiceService {
   logout(): void {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userID')
+    sessionStorage.removeItem('productsForUser')
     this.loggedInStatus.next(false);
     console.log(this.loggedInStatus)
   }

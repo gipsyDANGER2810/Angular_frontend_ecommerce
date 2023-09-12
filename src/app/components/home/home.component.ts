@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   productRecommended: any
   subscription: Subscription = new Subscription();
   allProduct: boolean = true
+  recommended :any
 
   page: number = 0;
   size: number = 10;
@@ -37,7 +38,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+    debugger
     this.category = this.route.snapshot.paramMap.get('category');
     this.productService.currentView = 'ALL';
     
@@ -49,12 +50,12 @@ export class HomeComponent implements OnInit {
         //   console.log("oninit this.category" , this.productList)
         // })
     } else {
-      const recommended = this.productService.getRecommendedProduct()
+      this.recommended = JSON.parse(sessionStorage.getItem('productsForUser') || '');
       // this.productService.recommendedProducts.subscribe((recommended) => {
-        console.log(recommended)
-        if (recommended) {
-            this.productList = recommended.Popular_products;
-            this.content_list = recommended.content_based_products;
+        console.log(this.recommended)
+        if (this.recommended) {
+            this.productList = this.recommended.Popular_products;
+            this.content_list = this.recommended.content_based_products;
           } else if (!this.loginService.currentLoginState) {
             // Load products if there are no recommendations and the user is not logged in
             this.loadProducts();
@@ -114,8 +115,8 @@ export class HomeComponent implements OnInit {
   loadProducts() {
     this.productService.getPopularProducts().pipe(retry(3)).subscribe(
       (result: any) => {
-        this.productList = result.first_set;
-        this.content_list = result.second_set;
+        this.productList = result.Popular_products;
+        this.content_list = result.content_based_products;
         this.isLoading = false;
         console.log(this.content_list)
       },
@@ -132,6 +133,7 @@ export class HomeComponent implements OnInit {
 
 
   addToCart(product: any) {
+    debugger
     this.cartService.addToCart(product);
   }
 
