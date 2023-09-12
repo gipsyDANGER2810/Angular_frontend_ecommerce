@@ -44,4 +44,7 @@ export class UserProfilePageComponent implements OnInit{
     this.loginService.logout()
     this.router.navigate(['/products'])
   }
+  login(){
+    this.router.navigate(['/login'])
+  }
 }

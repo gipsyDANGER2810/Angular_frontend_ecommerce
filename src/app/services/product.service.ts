@@ -66,6 +66,7 @@ recommendedProducts : any
   }
 
   fetchAllProducts(data : any) {
+    debugger
     this.refreshProductsSource.next(data);
   }
 

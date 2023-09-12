@@ -1,57 +1,19 @@
-<!-- <div *ngIf="productDetails" class="container mt-5">
-    <div class="row">
-        <div class="col-md-6">
-            <img [src]="productDetails.img_link" [alt]="productDetails.product_name" class="img-fluid">
-        </div>
-        <div class="col-md-6">
-            <h2 class="display-7" id="product_name">{{ productDetails.product_name }}</h2>
 
-            <p class="text-muted" id="category">{{ productDetails.category }}</p>
-
-            <h4>
-                <span class="text-danger discounted-price" id="discounted_price">₹{{ productDetails.discounted_price }}</span>
-                <small class="text-muted actual-price"><s id="actual_price">₹{{ productDetails.actual_price }}</s></small>
-            </h4>
-
-            <p class="discount-percentage" id="discount_percentage">{{ (productDetails.discount_percentage*100).toFixed(0) }}% off</p>
-
-            <p *ngIf="productDetails && productDetails.rating >= 0 && productDetails.rating <= 5">
-                <span id="rating"> -->
-                    <!-- Display full stars -->
-                    <!-- <i class="fa fa-star golden-star" *ngFor="let _ of [].constructor(productDetails.rating)"></i> -->
-
-                    <!-- Display empty stars -->
-                    <!-- <i class="fa fa-star-o golden-star" *ngFor="let _ of [].constructor(5 - productDetails.rating)"></i>
-                </span>
-                {{ productDetails.rating }} out of 5 stars
-            </p>
-
-
-
-
-
-            <p id="about_product">{{ productDetails.about_product }}</p> -->
-
-            <!-- Adjusted button size and added Buy Now button -->
-            <!-- <button class="btn btn-primary btn-sm mr-4">Add to Cart</button>
-            <button class="btn btn-success btn-sm ">Buy Now</button>
-        </div>
-    </div>
-</div> -->
 
 <div *ngIf="productDetails" class="container product-detail-container mt-5">
     <div class="row">
         <div class="col-md-6 image-col">
-            <img [src]="productDetails.img_link" [alt]="productDetails.product_name" class="img-fluid product-image">
+
+            <img [src]="productDetails.imgLink" [alt]="productDetails.productName" class="img-fluid product-image">
         </div>
         <div class="col-md-6 info-col">
-            <h2 class="display-7 product-title" id="product_name">{{ productDetails.product_name }}</h2>
+            <h2 class="display-7 product-title" id="product_name">{{ productDetails.productName }}</h2>
             <p class="text-muted category" id="category">{{ productDetails.category }}</p>
             <h4 class="price-details">
-                <span class="text-danger discounted-price" id="discounted_price">₹{{ productDetails.discounted_price }}</span>
-                <small class="text-muted actual-price" id="actual_price"><s>₹{{ productDetails.actual_price }}</s></small>
+                <span class="text-danger discounted-price" id="discounted_price">₹{{ productDetails.discountedPrice }}</span>
+                <small class="text-muted actual-price" id="actual_price"><s>₹{{ productDetails.actualPrice }}</s></small>
             </h4>
-            <p class="discount-percentage" id="discount_percentage">{{ (productDetails.discount_percentage*100).toFixed(0) }}% off</p>
+            <p class="discount-percentage" id="discount_percentage">{{ (productDetails.discountPercentage*100).toFixed(0) }}% off</p>
             <p class="rating-section" *ngIf="productDetails && productDetails.rating >= 0 && productDetails.rating <= 5">
                 <span id="rating">
                     <i class="fa fa-star golden-star" *ngFor="let _ of [].constructor(productDetails.rating)"></i>
@@ -59,7 +21,7 @@
                 </span>
                 {{ productDetails.rating }} out of 5 stars
             </p>
-            <p class="product-description" id="about_product">{{ productDetails.about_product }}</p>
+            <p class="product-description" id="about_product">{{ productDetails.aboutProduct }}</p>
             <div class="action-buttons">
                 <button class="btn btn-primary btn-sm add-to-cart-btn">Add to Cart</button>
                 <button class="btn btn-success btn-sm buy-now-btn">Buy Now</button>
@@ -67,3 +29,33 @@
         </div>
     </div>
 </div>
+
+
+
+    <!-- <h2 class="text-center section-title" style="margin-top: 20px;">Based On Your Past Purchases</h2>
+    <div class="container product-container">
+
+        <div class="row">
+            <div class="col-md-4 product-col" *ngFor="let product of content_list">
+                <div class="amazon-card">
+                    <div class="redirectToAbout" (click)="sendProductName(product.product_name , product.product_id)">
+                        <img [src]="product.recommended_product.img_link" class="amazon-card-img" [alt]="product.name">
+                        <h5 class="amazon-card-title">{{ product.recommended_product.product_name }}</h5>
+                        <p class="amazon-card-description">{{ product.about_product }}</p>
+                    </div>
+                    <div class="pricing" (click)="sendProductName(product.product_name , product.product_id)">
+                        <span class="discounted-price">₹ {{ product.recommended_product.discounted_price }}</span>
+                        <span class="actual-price">₹ <s>{{ product.recommended_product.actual_price }}</s></span>
+                        <span class="discount-percentage">{{ (product.recommended_product.discount_percentage * 100).toFixed(0) }}% off</span>
+                    </div>
+                    <div class="amazon-card-footer">
+                        <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy
+                            Now</button>
+                        <button (click)="addToCart(product)" class="btn btn-secondary amazon-cart-btn"><i
+                                class="fa fa-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+

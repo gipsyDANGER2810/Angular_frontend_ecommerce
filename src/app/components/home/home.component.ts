@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   isLoading: boolean = true
   productList: any[] = [];
   content_list: any[] = [];
+  filteredProductList: any[] = [];
   productRecommended: any
   subscription: Subscription = new Subscription();
   allProduct: boolean = true
@@ -43,35 +44,47 @@ export class HomeComponent implements OnInit {
     if (this.category) {
         // Filter products by category 
         this.filterProducts(this.category);
+        // this.productService.refreshProducts.subscribe((data : any) =>{
+        //   this.productList = data
+        //   console.log("oninit this.category" , this.productList)
+        // })
     } else {
       const recommended = this.productService.getRecommendedProduct()
       // this.productService.recommendedProducts.subscribe((recommended) => {
+        console.log(recommended)
         if (recommended) {
-          console.log(recommended)
             this.productList = recommended.Popular_products;
             this.content_list = recommended.content_based_products;
-            this.isLoading=false
-        } else if (!this.loginService.currentLoginState) {
+          } else if (!this.loginService.currentLoginState) {
             // Load products if there are no recommendations and the user is not logged in
             this.loadProducts();
+            // this.isLoading=false
         }
+            this.isLoading=false
       }
         
     }
 
   filterProducts(category: string) {
-    console.log("Category selected : ", category)
-    this.productService.getPopularProducts().pipe(retry(3)).subscribe(
-      (result: any) => {
-        this.productList = result.Popular_products;
-        this.content_list = result.content_based_products;
-        this.isLoading = false;
+    this.productService.refreshProducts.subscribe((data)=>{
+      this.filteredProductList = data
+      // this.content_list = []
+      console.log("in filter product")
+      console.log(this.filteredProductList)
+      this.isLoading = false
+    })
+    // console.log("Category selected : ", category)
+    // this.productService.getPopularProducts().pipe(retry(3)).subscribe(
+    //   (result: any) => {
+    //     this.productList = result.Popular_products;
+    //     this.content_list = result.content_based_products;
+    //     this.isLoading = false;
 
-      },
-      (error) => {
-        console.error('Error fetching products:', error);
-      }
-    );
+    //   },
+    //   (error) => {
+    //     console.error('Error fetching products:', error);
+    //   }
+    // );
   }
 
   navigateToCheckout(product: any) {

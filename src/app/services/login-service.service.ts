@@ -19,6 +19,7 @@ export class LoginServiceService {
     if (jwt) {
       localStorage.setItem('userToken', jwt);
       this.loggedInStatus.next(true);
+      console.log(this.loggedInStatus)
     }
   }
 
@@ -26,6 +27,7 @@ export class LoginServiceService {
     localStorage.removeItem('userToken');
     localStorage.removeItem('userID')
     this.loggedInStatus.next(false);
+    console.log(this.loggedInStatus)
   }
 
   // Inside LoginStateService
