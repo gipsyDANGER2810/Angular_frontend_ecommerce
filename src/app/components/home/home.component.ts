@@ -23,8 +23,10 @@ export class HomeComponent implements OnInit {
   recommended: any
   LoggedInState : boolean = false
 
-  page: number = 0;
-  size: number = 10;
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalPages !: number;
+  
   category: any;
 
 
@@ -77,24 +79,13 @@ export class HomeComponent implements OnInit {
 
   filterProducts(category: string) {
     this.productService.refreshProducts.subscribe((data) => {
-      this.filteredProductList = data
+      this.filteredProductList = data.content
       // this.content_list = []
       console.log("in filter product")
       console.log(this.filteredProductList)
       this.isLoading = false
     })
-    // console.log("Category selected : ", category)
-    // this.productService.getPopularProducts().pipe(retry(3)).subscribe(
-    //   (result: any) => {
-    //     this.productList = result.Popular_products;
-    //     this.content_list = result.content_based_products;
-    //     this.isLoading = false;
 
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching products:', error);
-    //   }
-    // );
   }
 
   navigateToCheckout(product: any) {
@@ -146,5 +137,7 @@ export class HomeComponent implements OnInit {
     this.cartService.addToCart(product);
   }
 
+
+  
 
 }

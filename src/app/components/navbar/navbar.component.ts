@@ -21,6 +21,11 @@ export class NavbarComponent implements OnInit {
   category_list: any;
   userID : string = 'null'
 
+  currentPage: number = 0;
+pageSize: number = 10;
+totalPages!: number;
+
+
   constructor(
     private productService:ProductService,
     private cartService: CartService, 
