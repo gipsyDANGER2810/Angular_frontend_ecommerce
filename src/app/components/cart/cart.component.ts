@@ -15,11 +15,12 @@ export class CartComponent implements OnInit {
   productSubscription: Subscription = new Subscription;
   item: any
   userId: string = ''
+  collabProducts: any[] = []; 
 
   constructor(private cartService: CartService , private productService : ProductService) { }
 
   ngOnInit(): void {
-    debugger
+    
     //  this.cartTotal = this.calculateTotal();
     this.productSubscription = this.cartService.cartItem.subscribe((data) => {
       this.item = data
@@ -28,7 +29,8 @@ export class CartComponent implements OnInit {
         console.log("no collab cz no login")
       }else{
         this.productService.getCollabRecommendations(this.userId).subscribe((data : any) =>{
-          console.log("recommendations from collab :" ,data)
+          // console.log("recommendations from collab :" ,data)
+          this.collabProducts = data.Collab_products;
         })
       }
       console.log(this.item)

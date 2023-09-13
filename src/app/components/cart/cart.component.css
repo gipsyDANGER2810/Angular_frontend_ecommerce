@@ -142,3 +142,41 @@ body {
     cursor: pointer;
   }
   
+
+  .recommendation-section {
+    background-color: #e5e5e5;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 30px;
+}
+
+.recommendation-header {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+.recommendation-list {
+    list-style: none;
+    padding: 0;
+}
+
+.recommended-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+    background-color: #218838;
+}

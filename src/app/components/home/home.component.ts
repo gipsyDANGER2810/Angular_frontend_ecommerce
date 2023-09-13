@@ -142,7 +142,7 @@ export class HomeComponent implements OnInit {
 
 
   addToCart(product: any) {
-    debugger
+    
     this.cartService.addToCart(product);
   }
 

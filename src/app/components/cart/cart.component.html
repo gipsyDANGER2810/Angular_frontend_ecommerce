@@ -36,7 +36,7 @@
                 <img [src]="item.img_link" alt="{{ item.name }}">
             </div>
             <div class="item-info">
-                <h3>{{ item.product_pame }}</h3>
+                <h3>{{ item.product_name }}</h3>
                 <span>Price: ₹{{ item.actual_price }}</span>
                 <span>Quantity: {{ item.quantity }}</span>
             </div>
@@ -55,3 +55,23 @@
         <button routerLink="/checkout" class="checkout-button">Proceed to Checkout</button>
     </div>
 </div>
+<div class="recommendation-section">
+    <div class="recommendation-header">
+        <h2>Recommended Products</h2>
+    </div>
+    <ul class="recommendation-list">
+        <li *ngFor="let product of collabProducts" class="recommended-item">
+            <div class="item-image">
+                <img [src]="product.recommended_product.img_link" alt="{{ product.recommended_product.product_name }}">
+            </div>
+            <div class="item-info">
+                <h3>{{ product.recommended_product.product_name }}</h3>
+                <span>Price: ₹{{ product.recommended_product.actual_price }}</span>
+                <p>Discounted Price: ₹{{ product.recommended_product.discounted_price }}</p>
+            </div>
+             <!-- <div class="item-action">
+                <button class="add-to-cart-button" (click)="addToCart(recommendedItem.id)">Add to Cart</button>
+            </div> -->
+       </li>
+    </ul>
+</div> 
