@@ -90,5 +90,9 @@ recommendedProducts : any
     return this.http.post(`http://localhost:8080/api/products/details` , product)
   }
 
+  getCollabRecommendations(userId : string){
+    return this.http.get(`http://127.0.0.1:5000/cart?userid=${userId}`)
+  }
+
 
 }

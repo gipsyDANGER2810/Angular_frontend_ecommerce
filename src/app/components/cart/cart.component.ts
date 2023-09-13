@@ -1,58 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
 
   cartItems = [];
   cartTotal = 0;
   productSubscription: Subscription = new Subscription;
-  item : any
+  item: any
+  userId: string = ''
 
-  constructor( private cartService : CartService){}
+  constructor(private cartService: CartService , private productService : ProductService) { }
 
   ngOnInit(): void {
-  //  this.cartTotal = this.calculateTotal();
-  this.productSubscription = this.cartService.cartItem.subscribe((data) =>{
-    this.item=data
-
-    console.log(this.item)
-  })
+    debugger
+    //  this.cartTotal = this.calculateTotal();
+    this.productSubscription = this.cartService.cartItem.subscribe((data) => {
+      this.item = data
+      this.userId = localStorage.getItem('userID')?.toString() || ''
+      if(this.userId == ''){
+        console.log("no collab cz no login")
+      }else{
+        this.productService.getCollabRecommendations(this.userId).subscribe((data : any) =>{
+          console.log("recommendations from collab :" ,data)
+        })
+      }
+      console.log(this.item)
+    })
   }
 
 
 
-
-
-  // calculateTotal() {
-  //   return this.cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  // }
-
-  // addItem(item) {
-  //   const foundItem = this.cartItems.find(cartItem => cartItem.id === item.id);
-  //   if (foundItem) {
-  //     foundItem.quantity += 1; // Update the quantity
-  //   } else {
-  //     this.cartItems.push({ ...item, quantity: 1 }); // Add new item
-  //   }
-  //   this.cartTotal = this.calculateTotal();
-  // }
-
-  // removeItem(id: number) {
-  //   this.cartItems = this.cartItems.filter(item => item.id !== id);
-  //   this.cartTotal = this.calculateTotal();
-  // }
-
-  // updateQuantity(id: number, quantity: number) {
-  //   const foundItem = this.cartItems.find(cartItem => cartItem.id === id);
-  //   if (foundItem) {
-  //     foundItem.quantity = quantity;
-  //   }
-  //   this.cartTotal = this.calculateTotal();
-  // }
 }

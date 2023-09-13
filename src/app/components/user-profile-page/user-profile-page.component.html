@@ -25,9 +25,9 @@
 
                 <ul *ngIf="products && products.length > 0">
                     <li class="amazon-card-description" *ngFor="let product of products">
-                        <img [src]="product.imgLink" alt="{{ product.productName }}" style="width: 50px; height: 50px;">
+                        <img [src]="product.img_link" alt="{{ product.productName }}" style="width: 50px; height: 50px;">
                         <!-- Adjust width and height accordingly -->
-                        {{ product.productName }}
+                        {{ product.product_name }}
                     </li>
                 </ul>
                 <ul *ngIf="!products || products.length === 0">

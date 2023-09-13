@@ -20,7 +20,8 @@ export class HomeComponent implements OnInit {
   productRecommended: any
   subscription: Subscription = new Subscription();
   allProduct: boolean = true
-  recommended :any
+  recommended: any
+  LoggedInState : boolean = false
 
   page: number = 0;
   size: number = 10;
@@ -38,36 +39,44 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    debugger
+    
     this.category = this.route.snapshot.paramMap.get('category');
     this.productService.currentView = 'ALL';
-    
+
     if (this.category) {
-        // Filter products by category 
-        this.filterProducts(this.category);
-        // this.productService.refreshProducts.subscribe((data : any) =>{
-        //   this.productList = data
-        //   console.log("oninit this.category" , this.productList)
-        // })
+      // Filter products by category 
+      this.filterProducts(this.category);
+      // this.productService.refreshProducts.subscribe((data : any) =>{
+      //   this.productList = data
+      //   console.log("oninit this.category" , this.productList)
+      // })
     } else {
-      this.recommended = JSON.parse(sessionStorage.getItem('productsForUser') || '');
-      // this.productService.recommendedProducts.subscribe((recommended) => {
-        console.log(this.recommended)
-        if (this.recommended) {
-            this.productList = this.recommended.Popular_products;
-            this.content_list = this.recommended.content_based_products;
-          } else if (!this.loginService.currentLoginState) {
-            // Load products if there are no recommendations and the user is not logged in
-            this.loadProducts();
-            // this.isLoading=false
-        }
-            this.isLoading=false
+      const productsForUser = sessionStorage.getItem('productsForUser');
+      if (productsForUser !== null) {  // Check for a non-null value
+        this.recommended = JSON.parse(productsForUser);
+      } else {
+        this.recommended = null;
       }
+      
+      if (this.recommended) {
+        this.productList = this.recommended.Popular_products;
+        this.content_list = this.recommended.content_based_products;
+        console.log("productList :" ,this.productList)
+        console.log("content list :" ,this.content_list)
+        this.LoggedInState = this.loginService.currentLoginState
         
+      } else if (!this.loginService.currentLoginState) {
+        // Load products if there are no recommendations and the user is not logged in
+        this.loadProducts();
+        // this.isLoading=false
+      }
+      this.isLoading = false
     }
 
+  }
+
   filterProducts(category: string) {
-    this.productService.refreshProducts.subscribe((data)=>{
+    this.productService.refreshProducts.subscribe((data) => {
       this.filteredProductList = data
       // this.content_list = []
       console.log("in filter product")

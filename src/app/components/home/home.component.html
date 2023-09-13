@@ -1,42 +1,13 @@
-<!-- <div *ngIf="isLoading" class="loader-container">
-    <div class="loader-bar"></div>
-</div>
-<h2  class="text-center">Best Sellers!</h2>
 
-<div *ngIf="!isLoading" class="container mt-5">
-    <div class="row">
-        <div class="col-md-4" *ngFor="let product of productList">
-            <div class="amazon-card " (click)="sendProductName(product.product_name , product.product_id)">
-                <img [src]="product.img_link" class="amazon-card-img" [alt]="product.name">
-                <h5 class="amazon-card-title">{{ product.product_name }}</h5>
-                <p class="card-text amazon-card-description">{{ product.about_product }}</p>
-                
-                
-                <div class="pricing">
-                    <span class="discounted-price">₹ {{ product.discounted_price }}</span>
-                    <span class="actual-price">₹ <s>{{ product.actual_price }}</s></span>
-                    <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}% off</span>
-                </div>
-                
-
-                <div class="amazon-card-footer">
-                    <a href="#" class="btn btn-primary amazon-card-btn">Buy Now</a>
-                    <a href="#" class="btn btn-primary "><i class="fa fa-cart-plus" style="font-size:20px"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <div *ngIf="isLoading" class="loader-container">
     <!-- <app-loader></app-loader> -->
     <div class="loader-bar"></div>
 </div>
-<div *ngIf="isLoading"  class="loader-overlay">
-    <app-loader></app-loader> 
+<div *ngIf="isLoading" class="loader-overlay">
+    <app-loader></app-loader>
 </div>
-
-<div >
+<div *ngIf="!LoggedInState">
 
     <h2 class="text-center section-title" style="margin-top: 20px;">Based On Your Past Purchases</h2>
     <div class="container product-container">
@@ -44,15 +15,46 @@
         <div class="row">
             <div class="col-md-4 product-col" *ngFor="let product of content_list">
                 <div class="amazon-card">
+                    <div class="redirectToAbout" (click)="sendProductName(product.product_name , product.product_id)">
+                        <img [src]="product.img_link" class="amazon-card-img" [alt]="product.name">
+                        <h5 class="amazon-card-title">{{ product.product_name }}</h5>
+                        <p class="amazon-card-description">{{ product.about_product }}</p>
+                    </div>
+                    <div class="pricing" (click)="sendProductName(product.product_name , product.product_id)">
+                        <span class="discounted-price">₹ {{ product.discounted_price }}</span>
+                        <span class="actual-price">₹ <s>{{ product.actual_price }}</s></span>
+                        <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}%
+                            off</span>
+                    </div>
+                    <div class="amazon-card-footer">
+                        <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy
+                            Now</button>
+                        <button (click)="addToCart(product)" class="btn btn-secondary amazon-cart-btn"><i
+                                class="fa fa-cart-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="LoggedInState">
+    <h2 class="text-center section-title" style="margin-top: 20px;">Based On Your Past Purchases</h2>
+    <div class="container product-container">
+
+        <div class="row">
+            <div class="col-md-4 product-col" *ngFor="let product of content_list">
+                <div class="amazon-card">
                     <div class="redirectToAbout" (click)="sendProductName(product.recommended_product.product_name , product.recommended_product.product_id)">
-                        <img [src]="product.recommended_product.img_link" class="amazon-card-img" [alt]="product.recommended_product.name">
+                        <img [src]="product.recommended_product.img_link" class="amazon-card-img" [alt]="product.name">
                         <h5 class="amazon-card-title">{{ product.recommended_product.product_name }}</h5>
                         <p class="amazon-card-description">{{ product.recommended_product.about_product }}</p>
                     </div>
                     <div class="pricing" (click)="sendProductName(product.recommended_product.product_name , product.recommended_product.product_id)">
                         <span class="discounted-price">₹ {{ product.recommended_product.discounted_price }}</span>
                         <span class="actual-price">₹ <s>{{ product.recommended_product.actual_price }}</s></span>
-                        <span class="discount-percentage">{{ (product.recommended_product.discount_percentage * 100).toFixed(0) }}% off</span>
+                        <span class="discount-percentage">{{ (product.recommended_product.discount_percentage * 100).toFixed(0) }}%
+                            off</span>
                     </div>
                     <div class="amazon-card-footer">
                         <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy
@@ -68,7 +70,7 @@
 <div *ngIf="filteredProductList.length>0">
 
     <h2 class="text-center section-title" style="margin-top: 20px;">Products in {{category}}</h2>
-    
+
     <div *ngIf="!isLoading" class="container product-container">
         <div class="row">
             <div class="col-md-4 product-col" *ngFor="let product of filteredProductList">
@@ -81,16 +83,18 @@
                     <div class="pricing" (click)="sendProductName(product.product_name , product.product_id)">
                         <span class="discounted-price">₹ {{ product.discounted_price }}</span>
                         <span class="actual-price">₹ <s>{{ product.actual_price }}</s></span>
-                        <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}% off</span>
+                        <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}%
+                            off</span>
                     </div>
                     <div class="amazon-card-footer">
-                        <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy Now</button>
+                        <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy
+                            Now</button>
                         <button (click)="addToCart(product)" class="btn btn-secondary amazon-cart-btn"><i
                                 class="fa fa-cart-plus"></i></button>
-    
+
                     </div>
                 </div>
-    
+
             </div>
             <!-- <button (click)="previousPage()" [disabled]="page === 0">Previous</button>
             <button (click)="nextPage()" [disabled]="page === productList.totalPages - 1">Next</button> -->
@@ -98,10 +102,10 @@
     </div>
 </div>
 
-<div >
+<div>
 
     <h2 class="text-center section-title" style="margin-top: 20px;">Best Sellers!</h2>
-    
+
     <div *ngIf="!isLoading" class="container product-container">
         <div class="row">
             <div class="col-md-4 product-col" *ngFor="let product of productList">
@@ -114,16 +118,18 @@
                     <div class="pricing" (click)="sendProductName(product.product_name , product.product_id)">
                         <span class="discounted-price">₹ {{ product.discounted_price }}</span>
                         <span class="actual-price">₹ <s>{{ product.actual_price }}</s></span>
-                        <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}% off</span>
+                        <span class="discount-percentage">{{ (product.discount_percentage * 100).toFixed(0) }}%
+                            off</span>
                     </div>
                     <div class="amazon-card-footer">
-                        <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy Now</button>
+                        <button (click)="navigateToCheckout(product)" class="btn btn-primary amazon-card-btn">Buy
+                            Now</button>
                         <button (click)="addToCart(product)" class="btn btn-secondary amazon-cart-btn"><i
                                 class="fa fa-cart-plus"></i></button>
-    
+
                     </div>
                 </div>
-    
+
             </div>
             <!-- <button (click)="previousPage()" [disabled]="page === 0">Previous</button>
             <button (click)="nextPage()" [disabled]="page === productList.totalPages - 1">Next</button> -->
