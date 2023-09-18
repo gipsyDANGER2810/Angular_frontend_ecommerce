@@ -66,7 +66,7 @@ recommendedProducts : any
   }
 
   fetchAllProducts(data : any) {
-    debugger
+
     this.refreshProductsSource.next(data);
   }
 
@@ -81,9 +81,9 @@ recommendedProducts : any
     return this.recommendedProducts;
   }
 
-  filteredProducts(category : string ){
+  filteredProducts(category : string , page : number , size : number ){
     const cat = encodeURIComponent(category)
-    return this.http.get(`http://localhost:8080/api/products/category?category=${cat}`)
+    return this.http.get(`http://localhost:8080/api/products/category?category=${cat}&page=${page}&size=${size}`)
   }
 
   getProductDetails(product : any){

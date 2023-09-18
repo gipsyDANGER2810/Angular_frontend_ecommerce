@@ -29,6 +29,9 @@ export class HomeComponent implements OnInit {
   
   category: any;
 
+  page :number = 0
+
+
 
 
 
@@ -80,6 +83,7 @@ export class HomeComponent implements OnInit {
   filterProducts(category: string) {
     this.productService.refreshProducts.subscribe((data) => {
       this.filteredProductList = data.content
+      this.totalPages = data.totalPages
       // this.content_list = []
       console.log("in filter product")
       console.log(this.filteredProductList)
@@ -137,7 +141,27 @@ export class HomeComponent implements OnInit {
     this.cartService.addToCart(product);
   }
 
+  previousPage(){
+    if (this.page > 0) {
+      this.page--;
+      console.log("previous :" , this.page)
+      this.productService.filteredProducts(this.category , this.page , this. pageSize).subscribe((data : any)=>{
+        this.filteredProductList = data.content
+        
+      })
+    }
+  }
 
+  nextPage(){
+    
+    if (this.page < this.totalPages - 1) {
+      this.page++;
+      console.log("This page : ",this.page, this.totalPages)
+      this.productService.filteredProducts(this.category , this.page , this. pageSize).subscribe((data : any)=>{
+        this.filteredProductList = data.content
+      })
+      }
+  }
   
 
 }

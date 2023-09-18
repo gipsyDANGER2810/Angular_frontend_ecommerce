@@ -68,7 +68,7 @@ totalPages!: number;
     debugger
     console.log(category);
     console.log(this.category_list[category])
-    this.productService.filteredProducts(category).subscribe((data)=>{
+    this.productService.filteredProducts(category , 0 ,10).subscribe((data)=>{
       console.log("in navbar" , data)
       this.productService.fetchAllProducts(data)
     })

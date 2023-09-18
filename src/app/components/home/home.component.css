@@ -1,14 +1,18 @@
 .card {
-    max-width: 250px;  /* Adjust this value as per your requirement */
-    margin: auto;  /* Centers the card within its container */
+    max-width: 250px;
+    /* Adjust this value as per your requirement */
+    margin: auto;
+    /* Centers the card within its container */
 }
 
 .card-title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 90%;  /* or any other value that works for you */
+    max-width: 90%;
+    /* or any other value that works for you */
 }
+
 .amazon-card {
     border: 1px solid #ddd;
     padding: 16px;
@@ -16,19 +20,22 @@
     transition: box-shadow .3s;
 
 
-    
+
 }
 
 .amazon-card:hover {
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+
 .col-md-4 {
     flex: 0 0 auto;
     width: 20%;
 }
+
 .amazon-card-img {
-    max-height: 100px; /* adjust this if needed */
-    object-fit: contain; 
+    max-height: 100px;
+    /* adjust this if needed */
+    object-fit: contain;
     width: 100%;
     display: block;
     margin: auto;
@@ -40,7 +47,8 @@
     text-overflow: ellipsis;
     max-width: 100%;
     margin-top: 12px;
-    font-size: 1em; /* reduced font size */
+    font-size: 1em;
+    /* reduced font size */
 }
 
 .amazon-card-text {
@@ -69,7 +77,8 @@
     text-overflow: ellipsis;
     max-width: 100%;
     margin-top: 10px;
-    font-size: 0.85em; /* Adjust this value to make the description font size smaller if needed */
+    font-size: 0.85em;
+    /* Adjust this value to make the description font size smaller if needed */
 }
 
 .pricing {
@@ -103,22 +112,36 @@
     right: 0;
     height: 4px;
     z-index: 9999;
-    background-color: #f0f1f2;  /* Background of the loader bar container */
+    background-color: #f0f1f2;
+    /* Background of the loader bar container */
 }
 
 
 .loader-bar {
     top: 1000px;
     height: 100%;
-    width: 15%;  /* Initial width of the loader bar */
-    background-color: #0140ff;  /* Color of the loader bar, Amazon-like orange */
+    width: 15%;
+    /* Initial width of the loader bar */
+    background-color: #0140ff;
+    /* Color of the loader bar, Amazon-like orange */
     animation: loading 1.5s infinite;
 }
 
 @keyframes loading {
-    0% { left: 0; right: 85%; }
-    50% { left: 40%; right: 45%; }
-    100% { left: 85%; right: 0; }
+    0% {
+        left: 0;
+        right: 85%;
+    }
+
+    50% {
+        left: 40%;
+        right: 45%;
+    }
+
+    100% {
+        left: 85%;
+        right: 0;
+    }
 }
 
 /* Uncomment if you have a price */
@@ -133,17 +156,17 @@
     font-size: 1.6em;
     color: #333;
     margin-bottom: 24px;
-  }
-  
-  .product-container {
+}
+
+.product-container {
     background-color: #f8f9fa;
     padding: 32px;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  }
-  
-  /* Loader styles */
-  .loader-container {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Loader styles */
+.loader-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -151,41 +174,76 @@
     height: 4px;
     z-index: 9999;
     background-color: #f0f1f2;
-  }
-  
-  .loader-bar {
+}
+
+.loader-bar {
     height: 100%;
     width: 15%;
     background-color: #007bff;
     animation: loading 1.5s infinite;
-  }
-  
-  /* Product card styles */
-  .amazon-card {
+}
+
+/* Product card styles */
+.amazon-card {
     border-radius: 8px;
     overflow: hidden;
     transition: box-shadow .3s;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .amazon-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  }
-  
-  /* Button styles in sync with your navbar */
-  .amazon-card-btn {
+}
+
+.amazon-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Button styles in sync with your navbar */
+.amazon-card-btn {
     background-color: #007bff;
     color: white;
     border: none;
-  }
-  
-  .amazon-cart-btn {
+}
+
+.amazon-cart-btn {
     background-color: #f8f9fa;
     color: #333;
     border: 1px solid #ccc;
-  }
+}
 
-  .redirectToAbout, .pricing :hover{
-    cursor:pointer;
-  }
+.redirectToAbout,
+.pricing :hover {
+    cursor: pointer;
+}
+
+/* General styles for the buttons */
+/* Pagination container */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* General styles for the pagination buttons */
+.pagination-container button {
+    margin: 0 10px;
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+}
+
+.pagination-container button:hover:not(:disabled) {
+    background-color: #e2e6ea;
+    border: 1px solid #cfd4d9;
+}
+
+.pagination-container button:disabled {
+    color: #888;
+    cursor: not-allowed;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+}
