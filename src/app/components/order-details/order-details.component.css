@@ -56,7 +56,7 @@
 }
 
 /* tracker css */
-ol.progtrckr {
+/* ol.progtrckr {
     margin: 0;
     padding: 0;
     list-style-type : none;
@@ -139,4 +139,161 @@ ol.progtrckr li.progtrckr-todo:before {
     background-color: white;
     font-size: 2.2em;
     bottom: -1.2em;
+} */
+.amazon-subtitle {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tracking-bar {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+ol.progtrckr {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+ol.progtrckr li {
+    flex: 1;
+    position: relative;
+    text-align: center;
+    list-style-type: none;
+}
+
+ol.progtrckr li:after,
+ol.progtrckr li:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    height: 4px;
+    background-color: silver;
+}
+
+ol.progtrckr li:before {
+    left: 0;
+}
+
+ol.progtrckr li:after {
+    right: 0;
+}
+
+ol.progtrckr li:first-child:before,
+ol.progtrckr li:last-child:after {
+    content: none;
+}
+
+ol.progtrckr li.progtrckr-done:before,
+ol.progtrckr li.progtrckr-done:after {
+    background-color: yellowgreen;
+}
+
+ol.progtrckr li.progtrckr-todo:before,
+ol.progtrckr li.progtrckr-todo:after {
+    background-color: silver;
+}
+
+ol.progtrckr li span {
+    display: block;
+    position: relative;
+    top: -12px;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    background-color: yellowgreen;
+    border-radius: 50%;
+    line-height: 24px;
+    color: #fff;
+    font-weight: bold;
+}
+
+ol.progtrckr li.progtrckr-todo span {
+    background-color: silver;
+    color: #666;
+}
+
+
+.review-button {
+    background-color: #007bff; /* You can change this color to any other color you prefer */
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s; /* This makes color and transform changes smooth */
+}
+
+.review-button:hover {
+    background-color: #0056b3; /* A slightly darker shade for hover */
+}
+
+.review-button:active {
+    transform: scale(0.95); /* Button slightly scales down when clicked */
+}
+
+.review-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.review-title,
+.review-content {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.review-content {
+    height: 100px;
+    resize: vertical; /* This allows users to resize the textarea vertically */
+}
+
+.submit-review-button {
+    background-color: #28a745; /* Or any color you prefer */
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-review-button:hover {
+    background-color: #218838; /* A slightly darker shade for hover */
+}
+
+.submit-review-button:active {
+    background-color: #1e7e34; /* An even darker shade for active/click */
+}
+
+.stars {
+    margin: 0 0 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.stars span {
+    color: silver;
+}
+
+.stars span.active {
+    color: gold;
 }

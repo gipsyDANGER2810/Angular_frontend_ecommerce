@@ -65,12 +65,23 @@
                 <h4 class="amazon-subtitle">Tracking Order</h4>
                 <div class="tracking-bar">
                     <ol class="progtrckr" data-progtrckr-steps="5">
-                        <li class="progtrckr-done">Order Processing</li>
-                        <li class="progtrckr-done">Pre-Production</li>
-                        <li class="progtrckr-done">In Production</li>
-                        <li class="progtrckr-todo">Shipped</li>
-                        <li class="progtrckr-todo">Delivered</li>
+                        <li [ngClass]="{'progtrckr-done': orderStatus !== 'Pending', 'progtrckr-todo': orderStatus === 'Pending'}">
+                            Order Processing<span>1</span>
+                        </li>
+                        <li [ngClass]="{'progtrckr-done': orderStatus !== 'Pending' && orderStatus !== 'Order Processing', 'progtrckr-todo': orderStatus === 'Pending' || orderStatus === 'Order Processing'}">
+                            Pre-Production<span>2</span>
+                        </li>
+                        <li [ngClass]="{'progtrckr-done': orderStatus === 'In Production' || orderStatus === 'Shipped' || orderStatus === 'Out for Delivery' || orderStatus === 'Delivered', 'progtrckr-todo': orderStatus !== 'In Production' && orderStatus !== 'Shipped' && orderStatus !== 'Out for Delivery' && orderStatus !== 'Delivered'}">
+                            In Production<span>3</span>
+                        </li>
+                        <li [ngClass]="{'progtrckr-done': orderStatus === 'Shipped' || orderStatus === 'Out for Delivery' || orderStatus === 'Delivered', 'progtrckr-todo': orderStatus !== 'Shipped' && orderStatus !== 'Out for Delivery' && orderStatus !== 'Delivered'}">
+                            Shipped<span>4</span>
+                        </li>
+                        <li [ngClass]="{'progtrckr-done': orderStatus === 'Delivered', 'progtrckr-todo': orderStatus !== 'Delivered'}">
+                            Delivered<span>5</span>
+                        </li>
                     </ol>
+                    
                 </div>
             </div>
     
@@ -84,11 +95,11 @@
                         
                         <!-- Display review form for each product if the order status is Delivered -->
                         <div *ngIf="orderStatus === 'Delivered'">
-                            <button (click)="toggleReviewForProduct(product)">Write a Review</button>
+                            <button  class="review-button" (click)="toggleReviewForProduct(product)">Write a Review</button>
                             <div *ngIf="product.showReview">
-                                <input type="text" placeholder="Review title for {{product.product_name}}" [(ngModel)]="product.reviewTitle">
-                                <textarea placeholder="Write your review for {{product.product_name}} here..." [(ngModel)]="product.reviewContent"></textarea>
-                                <button (click)="submitReview(product.product_id , product.reviewTitle , product.reviewContent)">Submit Review</button>
+                                <input class="review-title" type="text" placeholder="Review title for {{product.product_name}}" [(ngModel)]="product.reviewTitle">
+                                <textarea class="review-content" placeholder="Write your review for {{product.product_name}} here..." [(ngModel)]="product.reviewContent"></textarea>
+                                <button class="btn success-btn" (click)="submitReview(product.product_id , product.reviewTitle , product.reviewContent)">Submit Review</button>
                             </div>
                         </div>
                     </div>

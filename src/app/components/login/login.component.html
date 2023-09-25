@@ -49,7 +49,9 @@
                 <button class="btn custom-btn mx-2" (click)="showForm('login')">Login</button>
                 <button class="btn custom-btn mx-2" (click)="showForm('register')">Register</button>
             </div>
-
+            <!-- <div class="loader" *ngIf="isLoading">
+                <app-loader></app-loader>
+            </div> -->
             <!-- Login Form -->
             <div *ngIf="currentForm === 'login'" class="form-container">
                 <h3 class="form-title mb-4">Login</h3>
@@ -63,6 +65,9 @@
                             placeholder="Password">
                     </div>
                     <button type="submit" (click)="handleLogin(username,password)" class="btn custom-btn">Log In</button>
+                    <span class="loader" *ngIf="isLoading">
+                        <app-loader></app-loader>
+                    </span>
                 </form>
             </div>
 
@@ -84,6 +89,8 @@
                     </div>
                     <button type="submit" (click)="handleRegister(registerUsername,registerPassword)" class="btn custom-btn">Register</button>
                 </form>
+                <div *ngIf="isRegister">Registration successful!</div>
+
             </div>
         </div>
     </div>

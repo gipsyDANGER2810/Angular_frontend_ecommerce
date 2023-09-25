@@ -16,8 +16,8 @@ export class OrderDetailsComponent implements OnInit {
 
   reviewTitle : string = ''
   reviewContent : string = ''
-
-  orderStatus: string = 'Processing';
+  stars: number[] = [1, 2, 3, 4, 5];
+  orderStatus: string = 'Pending';
   showReview: boolean = false;
   tracking: boolean = false;
   productId: string = '';
@@ -44,18 +44,28 @@ export class OrderDetailsComponent implements OnInit {
     this.tracking = true;
 
     setTimeout(() => {
-      this.orderStatus = 'Shipped';
-    }, 3000); // Simulates the order being shipped after 3 seconds
+        this.orderStatus = 'Order Processing';
+    }, 3000);
 
     setTimeout(() => {
-      this.orderStatus = 'Out for Delivery';
-    }, 6000); // Simulates the order out for delivery after 6 seconds
+        this.orderStatus = 'Pre-Production';
+    }, 6000);
 
     setTimeout(() => {
-      this.orderStatus = 'Delivered';
-      this.tracking = false;
-    }, 10000); // Simulates the order being delivered after 10 seconds
-  }
+        this.orderStatus = 'In Production';
+    }, 9000);
+
+    setTimeout(() => {
+        this.orderStatus = 'Shipped';
+    }, 12000);
+
+    setTimeout(() => {
+        this.orderStatus = 'Delivered';
+        this.tracking = false;
+    }, 15000);
+}
+
+
 
   requestReview() {
     this.showReview = true;
@@ -65,7 +75,7 @@ export class OrderDetailsComponent implements OnInit {
     product.showReview = !product.showReview; // toggle the review form for the given product
   }
 
-  submitReview(productId : string , reviewTitle : string , reviewContent : string){
+  submitReview(productId : string , reviewTitle : string , reviewContent : string ){
     const userId = localStorage.getItem('userID')
     this.reviewTitle = reviewTitle
     this.reviewContent = reviewContent
